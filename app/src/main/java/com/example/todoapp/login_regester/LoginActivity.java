@@ -32,12 +32,5 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intentlogin);
         });
 
-        //setup login setup
-        TextView register = findViewById(R.id.register);
-        register.setOnClickListener(v -> {
-            Intent intentlogin = new Intent(LoginActivity.this, RegistrationActivity.class);
-            startActivity(intentlogin);
-        });
-
     }
 }
