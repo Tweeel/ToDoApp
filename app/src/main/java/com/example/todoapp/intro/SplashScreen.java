@@ -1,4 +1,4 @@
-package com.example.todoapp;
+package com.example.todoapp.intro;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +10,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-import com.example.todoapp.intro.IntroActivity;
+import com.example.todoapp.R;
 
 public class SplashScreen extends AppCompatActivity {
 
