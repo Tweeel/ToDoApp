@@ -19,8 +19,8 @@ public class LoginActivity extends AppCompatActivity {
         //setup rollback button
         ImageView rollaback = findViewById(R.id.rollback);
         rollaback.setOnClickListener(v -> {
-            Intent intentlogin = new Intent(this, IntroActivity.class);
-            startActivity(intentlogin);
+            Intent intentRollBack = new Intent(this, IntroActivity.class);
+            startActivity(intentRollBack);
         });
 
         //setup forget password

@@ -12,8 +12,15 @@
         <entry key="app/src/main/res/layout/activity_forget_password.xml" value="0.196875" />
         <entry key="app/src/main/res/layout/activity_intro.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_log_in.xml" value="0.1286231884057971" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_password.xml" value="0.196875" />
+        <entry key="app/src/main/res/layout/activity_reset_password.xml" value="0.196875" />
+        <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.13768115942028986" />
+        <entry key="app/src/main/res/layout/activity_succesful.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/content_password.xml" value="0.196875" />
+        <entry key="app/src/main/res/layout/fragment_first.xml" value="0.196875" />
+        <entry key="app/src/main/res/layout/fragment_second.xml" value="0.196875" />
         <entry key="app/src/main/res/layout/slider_1.xml" value="0.1408514492753623" />
         <entry key="app/src/main/res/layout/slider_screen.xml" value="0.22" />
         <entry key="app/src/main/res/layout/slider_started_page.xml" value="0.1408514492753623" />

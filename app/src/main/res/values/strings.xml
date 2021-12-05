@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ToDoApp</string>
+    <string name="log_in"><u>Log In</u></string>
+    <string name="forget_password"><u>Forget password</u></string>
 </resources>
