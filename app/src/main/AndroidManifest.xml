@@ -8,11 +8,19 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ToDoApp"
-        android:fullBackupContent="@xml/backup_descriptor">
+        android:theme="@style/Theme.ToDoApp">
+        <activity
+            android:name=".RegistrationActivity"
+            android:exported="true" />
         <activity
             android:name=".SplashScreen"
-            android:exported="true" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".SuccesfulActivity"
             android:exported="true" />
@@ -29,13 +37,7 @@
         <activity
             android:name=".IntroActivity"
             android:exported="true"
-            android:screenOrientation="fullSensor">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:screenOrientation="fullSensor" />
     </application>
 
 </manifest>
