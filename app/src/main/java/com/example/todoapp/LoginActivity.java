@@ -1,4 +1,4 @@
-package com.example.todoapp.login_regester;
+package com.example.todoapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,9 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.example.todoapp.R;
-import com.example.todoapp.intro.IntroActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -33,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         //setup signup setup
-        TextView register = findViewById(R.id.register);
+        TextView register = findViewById(R.id.register_btn);
         register.setOnClickListener(v -> {
             Intent intentlogin = new Intent(LoginActivity.this, RegistrationActivity.class);
             startActivity(intentlogin);

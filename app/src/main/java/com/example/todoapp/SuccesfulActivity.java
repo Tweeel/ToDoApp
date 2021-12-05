@@ -1,4 +1,4 @@
-package com.example.todoapp.login_regester;
+package com.example.todoapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.todoapp.R;
 
 public class SuccesfulActivity extends AppCompatActivity {
 

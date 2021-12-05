@@ -1,4 +1,4 @@
-package com.example.todoapp.intro;
+package com.example.todoapp;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,10 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.todoapp.login_regester.LoginActivity;
-import com.example.todoapp.R;
-import com.example.todoapp.login_regester.RegistrationActivity;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,8 +19,9 @@ public class IntroActivity extends AppCompatActivity {
     TextView[] dots ;
     LinearLayout dotslayout,buttonsLayout;
     int[] images = {R.drawable.pink_design_back
-            , R.drawable.purple_design_back
-            , R.drawable.green_design_back};
+            ,R.drawable.purple_design_back
+            ,R.drawable.green_design_back};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,9 +31,9 @@ public class IntroActivity extends AppCompatActivity {
         buttonsLayout = findViewById(R.id.button);
 
         //setup signup button
-        AppCompatButton registerButton = findViewById(R.id.register);
+        AppCompatButton registerButton = findViewById(R.id.register_btn);
         registerButton.setOnClickListener(v -> {
-            Intent intentlogin = new Intent(IntroActivity.this, RegistrationActivity.class);
+            Intent intentlogin = new Intent(this, RegistrationActivity.class);
             startActivity(intentlogin);
         });
 
@@ -66,7 +63,7 @@ public class IntroActivity extends AppCompatActivity {
         //setup the dots
         dots = new TextView[3];
         dotsIndicator();
-
+        //change the dots on the selected page
         screenPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override

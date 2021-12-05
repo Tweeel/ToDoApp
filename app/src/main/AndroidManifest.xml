@@ -8,55 +8,34 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ToDoApp">
+        android:theme="@style/Theme.ToDoApp"
+        android:fullBackupContent="@xml/backup_descriptor">
         <activity
-            android:name=".intro.SplashScreen"
+            android:name=".SplashScreen"
+            android:exported="true" />
+        <activity
+            android:name=".SuccesfulActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ResetPasswordActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ForgetPasswordActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LoginActivity"
             android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.ToDoApp">
+            android:parentActivityName=".IntroActivity" />
+        <activity
+            android:name=".IntroActivity"
+            android:exported="true"
+            android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".intro.IntroActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.ToDoApp"/>
-
-        <activity
-            android:name=".login_regester.LoginActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.ToDoApp"/>
-
-        <activity
-            android:name=".login_regester.RegistrationActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.ToDoApp"/>
-
-        <activity
-            android:name=".login_regester.ForgetPasswordActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.ToDoApp"/>
-
-        <activity
-            android:name=".login_regester.ResetPasswordActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.ToDoApp"/>
-
-        <activity
-            android:name=".login_regester.SuccesfulActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.ToDoApp"/>
-
     </application>
 
 </manifest>

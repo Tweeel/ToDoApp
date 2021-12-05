@@ -1,4 +1,4 @@
-package com.example.todoapp.login_regester;
+package com.example.todoapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
@@ -6,8 +6,6 @@ import androidx.appcompat.widget.AppCompatButton;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
-
-import com.example.todoapp.R;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -17,7 +15,7 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
 
         //setup register button
-        AppCompatButton registerButton = findViewById(R.id.register);
+        AppCompatButton registerButton = findViewById(R.id.register_btn);
         registerButton.setOnClickListener(v -> {
             Intent intentlogin = new Intent(RegistrationActivity.this, SuccesfulActivity.class);
             startActivity(intentlogin);
