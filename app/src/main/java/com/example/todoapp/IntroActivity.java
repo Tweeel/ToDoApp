@@ -1,9 +1,11 @@
 package com.example.todoapp;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -29,16 +31,23 @@ public class IntroActivity extends AppCompatActivity {
         dotslayout = findViewById(R.id.dots_container);
         buttonsLayout = findViewById(R.id.button);
 
+        //setup the login button
+        TextView  login = findViewById(R.id.login);
+        login.setOnClickListener(v -> {
+            Intent intentlogin = new Intent(IntroActivity.this, LoginActivity.class);
+            startActivity(intentlogin);
+        });
+
         //fill list screen
         List<IntroSliderItems> mList = new ArrayList<>();
         mList.add(new IntroSliderItems(R.drawable.slide_image_1,"Welcome to aking"
-        ,"What goind to happen tomorrow?"));
+        ,"Whats going to happen tomorrow?"));
 
         mList.add(new IntroSliderItems(R.drawable.slide_image_2,"Work happens"
                 ,"Get notified when work happens."));
 
         mList.add(new IntroSliderItems(R.drawable.slide_image_3,"Tasks and assign"
-                ,"Task and assign them to colleages."));
+                ,"Task and assign them to colleagues."));
 
         //setup viewpager
         ViewPager screenPager = findViewById(R.id.intro_view_pager);
@@ -68,6 +77,7 @@ public class IntroActivity extends AppCompatActivity {
 
     }
 
+    /*make the dots in the selected one black*/
     private void selectedDots(int position) {
         for (int i = 0; i < dots.length; i++) {
             buttonsLayout.setBackgroundResource(images[position]);
@@ -79,6 +89,7 @@ public class IntroActivity extends AppCompatActivity {
         }
     }
 
+    /*isnnisialise the dots at first*/
     private void dotsIndicator() {
         for(int i=0;i<dots.length;i++){
             if(i==0){

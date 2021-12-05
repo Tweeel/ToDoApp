@@ -8,6 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#C8C6C6</color>
+    <color name="grey_mate">#6D8299</color>
+    <color name="grey2">#B2B1B9</color>
+
+
 
     /*Color Pallette*/
     <color name="pink">#f96060</color>
@@ -20,5 +24,6 @@
     <color name="green_button">#5BBB56</color>
     <color name="purple_button">#3D3B62</color>
     <color name="beige_button">#F5CA90</color>
+
 
 </resources>
