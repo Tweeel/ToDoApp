@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
@@ -30,6 +31,13 @@ public class IntroActivity extends AppCompatActivity {
 
         dotslayout = findViewById(R.id.dots_container);
         buttonsLayout = findViewById(R.id.button);
+
+        //setup signup button
+        AppCompatButton registerButton = (AppCompatButton) findViewById(R.id.register);
+        registerButton.setOnClickListener(v -> {
+            Intent intentlogin = new Intent(IntroActivity.this, RegistrationActivity.class);
+            startActivity(intentlogin);
+        });
 
         //setup the login button
         TextView  login = findViewById(R.id.login);
