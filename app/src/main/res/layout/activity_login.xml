@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="50dp"
         android:text="Welcome back"
         android:textColor="@color/dark"
         android:textSize="35sp"
@@ -120,4 +120,16 @@
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="@string/register"
+        android:textColor="@color/dark"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:ignore="RtlHardcoded" />
 </LinearLayout>

@@ -10,65 +10,53 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ToDoApp">
         <activity
-<<<<<<< HEAD
-<<<<<<< HEAD
-            android:name=".MainActivity2"
+            android:name=".intro.SplashScreen"
             android:exported="true"
-            android:label="@string/title_activity_main2" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/title_activity_main"
-            android:theme="@style/Theme.ToDoApp.NoActionBar">
-=======
-            android:name=".SplashScreen"
-            android:exported="true" >
->>>>>>> parent of 79accae (register and login ui)
-=======
-            android:name=".SplashScreen"
-            android:exported="true" >
->>>>>>> parent of 79accae (register and login ui)
+            android:label="@string/app_name"
+            android:theme="@style/Theme.ToDoApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".login_regester.RegistrationActivity"
-            android:exported="true" />
-        <activity
-            android:name=".SplashScreen"
-            android:exported="true"></activity>
-        <activity
-            android:name=".login_regester.SuccesfulActivity"
-            android:exported="true" />
-        <activity
-            android:name=".login_regester.ResetPasswordActivity"
-            android:exported="true" />
-        <activity
-            android:name=".login_regester.ForgetPasswordActivity"
-            android:exported="true" />
-        <activity
-            android:name=".login_regester.LoginActivity"
-            android:exported="true"
-            android:parentActivityName=".intro.IntroActivity" />
+
         <activity
             android:name=".intro.IntroActivity"
             android:exported="true"
-<<<<<<< HEAD
-<<<<<<< HEAD
-            android:screenOrientation="portrait" />
-=======
-            android:screenOrientation="portrait">
+            android:label="@string/app_name"
+            android:theme="@style/Theme.ToDoApp"/>
 
-        </activity>
->>>>>>> parent of 79accae (register and login ui)
-=======
-            android:screenOrientation="portrait">
+        <activity
+            android:name=".login_regester.LoginActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.ToDoApp"/>
 
-        </activity>
->>>>>>> parent of 79accae (register and login ui)
+        <activity
+            android:name=".login_regester.RegistrationActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.ToDoApp"/>
+
+        <activity
+            android:name=".login_regester.ForgetPasswordActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.ToDoApp"/>
+
+        <activity
+            android:name=".login_regester.ResetPasswordActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.ToDoApp"/>
+
+        <activity
+            android:name=".login_regester.SuccesfulActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.ToDoApp"/>
+
     </application>
 
 </manifest>
