@@ -11,6 +11,7 @@
         android:theme="@style/Theme.ToDoApp">
         <activity
 <<<<<<< HEAD
+<<<<<<< HEAD
             android:name=".MainActivity2"
             android:exported="true"
             android:label="@string/title_activity_main2" />
@@ -19,6 +20,10 @@
             android:exported="true"
             android:label="@string/title_activity_main"
             android:theme="@style/Theme.ToDoApp.NoActionBar">
+=======
+            android:name=".SplashScreen"
+            android:exported="true" >
+>>>>>>> parent of 79accae (register and login ui)
 =======
             android:name=".SplashScreen"
             android:exported="true" >
@@ -52,7 +57,13 @@
             android:name=".intro.IntroActivity"
             android:exported="true"
 <<<<<<< HEAD
+<<<<<<< HEAD
             android:screenOrientation="portrait" />
+=======
+            android:screenOrientation="portrait">
+
+        </activity>
+>>>>>>> parent of 79accae (register and login ui)
 =======
             android:screenOrientation="portrait">
 
