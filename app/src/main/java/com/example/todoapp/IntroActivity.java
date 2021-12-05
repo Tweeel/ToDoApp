@@ -1,27 +1,26 @@
 package com.example.todoapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
-import androidx.viewpager2.widget.ViewPager2;
-
-import android.graphics.drawable.Drawable;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.Html;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class IntroActivity extends AppCompatActivity {
 
-    private ViewPager screenPager;
     IntroViewPageAdapter introviewPageAdapter;
     TextView[] dots ;
     LinearLayout dotslayout,buttonsLayout;
-    int[] images = {R.drawable.whats_going_to_happen_tomorrow
-            , R.drawable.work_happens, R.drawable.tasks_and_assign};
-
+    int[] images = {R.drawable.pink_design_back
+            , R.drawable.purple_design_back
+            , R.drawable.green_design_back};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,17 +31,17 @@ public class IntroActivity extends AppCompatActivity {
 
         //fill list screen
         List<IntroSliderItems> mList = new ArrayList<>();
-        mList.add(new IntroSliderItems(R.drawable.whats_going_to_happen_tomorrow,"Welcome to aking"
+        mList.add(new IntroSliderItems(R.drawable.slide_image_1,"Welcome to aking"
         ,"What goind to happen tomorrow?"));
 
-        mList.add(new IntroSliderItems(R.drawable.work_happens,"Work happens"
+        mList.add(new IntroSliderItems(R.drawable.slide_image_2,"Work happens"
                 ,"Get notified when work happens."));
 
-        mList.add(new IntroSliderItems(R.drawable.tasks_and_assign,"Tasks and assign"
+        mList.add(new IntroSliderItems(R.drawable.slide_image_3,"Tasks and assign"
                 ,"Task and assign them to colleages."));
 
         //setup viewpager
-        screenPager = findViewById(R.id.intro_view_pager);
+        ViewPager screenPager = findViewById(R.id.intro_view_pager);
         introviewPageAdapter = new IntroViewPageAdapter(this,mList);
         screenPager.setAdapter(introviewPageAdapter);
 
@@ -64,16 +63,14 @@ public class IntroActivity extends AppCompatActivity {
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
-
         });
 
     }
 
     private void selectedDots(int position) {
         for (int i = 0; i < dots.length; i++) {
-            buttonsLayout.setBackgroundResource(images[i]);
+            buttonsLayout.setBackgroundResource(images[position]);
             if (i == position) {
                 dots[i].setTextColor(getResources().getColor(R.color.black));
             } else {

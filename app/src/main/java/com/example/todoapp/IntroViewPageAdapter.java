@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class IntroViewPageAdapter extends PagerAdapter {
@@ -36,7 +38,7 @@ public class IntroViewPageAdapter extends PagerAdapter {
 
         title.setText(mScreenItem.get(position).getTitle());
         description.setText(mScreenItem.get(position).getDiscription());
-        imgSlid.setImageResource(mScreenItem.get(position).getScreenIMG());
+        Glide.with(mContext).load(mScreenItem.get(position).getScreenIMG()).into(imgSlid);
 
         container.addView(layoutScreen);
 
@@ -65,6 +67,7 @@ public class IntroViewPageAdapter extends PagerAdapter {
     public static class DetailOnPageChangeListener extends ViewPager.SimpleOnPageChangeListener {
 
         private int currentPage;
+        private ImageView mSportsImage;
 
         @Override
         public void onPageSelected(int position) {
@@ -75,5 +78,7 @@ public class IntroViewPageAdapter extends PagerAdapter {
             return currentPage;
         }
     }
+
+
 
 }

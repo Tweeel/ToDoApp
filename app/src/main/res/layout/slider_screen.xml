@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:src="@drawable/whats_going_to_happen_tomorrow" />
+        android:src="@drawable/slide_image_1" />
 
     <TextView
         android:id="@+id/Intro_title"
