@@ -10,6 +10,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
+import com.example.todoapp.intro.IntroActivity;
+
 public class SplashScreen extends AppCompatActivity {
 
     private static int SPLASH_SCREEN =2000;
