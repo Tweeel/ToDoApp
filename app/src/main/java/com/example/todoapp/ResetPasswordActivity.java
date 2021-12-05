@@ -26,6 +26,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
         change_btn.setOnClickListener(v -> {
             Intent intentRequest = new Intent(this, SuccesfulActivity.class);
             startActivity(intentRequest);
+            finish();
         });
     }
 }
