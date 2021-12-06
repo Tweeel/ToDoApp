@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/myTask"
+        android:title="My Tasks"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/my_task"/>
+    <item
+        android:id="@+id/menu"
+        android:title="Menu"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/menu"/>
+    <item
+        android:id="@+id/empty"
+        android:title=""
+        app:showAsAction="ifRoom"
+        android:enabled="false"/>
+    <item
+        android:id="@+id/Quick"
+        android:title="Quick"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/quick"/>
+    <item
+        android:id="@+id/profile"
+        android:title="Profile"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/profile"/>
+
+</menu>

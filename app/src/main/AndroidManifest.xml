@@ -10,11 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ToDoApp">
         <activity
-            android:name=".login_register.RegistrationActivity"
-            android:exported="true" />
-        <activity
-            android:name=".intro.SplashScreen"
-            android:exported="true">
+            android:name=".MainActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,22 +19,28 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".login_register.SuccesfulActivity"
+            android:name=".RegistrationActivity"
             android:exported="true" />
         <activity
-            android:name=".login_register.ResetPasswordActivity"
+            android:name=".SplashScreen"
+            android:exported="true"/>
+        <activity
+            android:name=".SuccesfulActivity"
             android:exported="true" />
         <activity
-            android:name=".login_register.ForgetPasswordActivity"
+            android:name=".ResetPasswordActivity"
             android:exported="true" />
         <activity
-            android:name=".login_register.LoginActivity"
+            android:name=".ForgetPasswordActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LoginActivity"
             android:exported="true"
-            android:parentActivityName=".intro.IntroActivity" />
+            android:parentActivityName=".IntroActivity" />
         <activity
-            android:name=".intro.IntroActivity"
+            android:name=".IntroActivity"
             android:exported="true"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
