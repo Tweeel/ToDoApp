@@ -1,4 +1,4 @@
-package com.example.todoapp;
+package com.example.todoapp.intro;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.viewpager.widget.ViewPager;
+
+import com.example.todoapp.login_register.LoginActivity;
+import com.example.todoapp.R;
+import com.example.todoapp.login_register.RegistrationActivity;
 
 import java.util.ArrayList;
 import java.util.List;

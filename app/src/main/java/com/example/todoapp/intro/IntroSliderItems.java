@@ -1,4 +1,4 @@
-package com.example.todoapp;
+package com.example.todoapp.intro;
 
 import android.widget.ImageView;
 import android.widget.TextView;

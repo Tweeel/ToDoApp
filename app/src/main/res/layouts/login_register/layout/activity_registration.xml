@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".RegistrationActivity"
+    tools:context=".login_register.RegistrationActivity"
     android:background="@color/white">
 
     <ImageView
@@ -145,7 +145,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="15dp"
         android:background="@drawable/back_round_pink"
-        android:text="Log In"
+        android:text="Sign up"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="20sp" />

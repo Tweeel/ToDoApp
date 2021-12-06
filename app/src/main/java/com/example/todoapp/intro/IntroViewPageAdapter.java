@@ -1,4 +1,4 @@
-package com.example.todoapp;
+package com.example.todoapp.intro;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,6 +12,8 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
+import com.example.todoapp.R;
+import com.example.todoapp.intro.IntroSliderItems;
 
 import java.util.List;
 

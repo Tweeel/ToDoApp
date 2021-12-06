@@ -1,4 +1,4 @@
-package com.example.todoapp;
+package com.example.todoapp.login_register;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
@@ -6,6 +6,8 @@ import androidx.appcompat.widget.AppCompatButton;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.example.todoapp.R;
 
 public class RegistrationActivity extends AppCompatActivity {
 
