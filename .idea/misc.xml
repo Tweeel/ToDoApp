@@ -14,7 +14,7 @@
         <entry key="app/src/main/res/layout/activity_intro.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_log_in.xml" value="0.1286231884057971" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_main2.xml" value="0.196875" />
         <entry key="app/src/main/res/layout/activity_password.xml" value="0.196875" />
         <entry key="app/src/main/res/layout/activity_registration.xml" value="0.18" />
@@ -30,9 +30,17 @@
         <entry key="app/src/main/res/layout/slider_1.xml" value="0.1408514492753623" />
         <entry key="app/src/main/res/layout/slider_screen.xml" value="0.22" />
         <entry key="app/src/main/res/layout/slider_started_page.xml" value="0.1408514492753623" />
+        <entry key="app/src/main/res/layouts/intro/drawable/bottom_back.xml" value="0.13796296296296295" />
+        <entry key="app/src/main/res/layouts/intro/drawable/nav_back.xml" value="0.13240740740740742" />
         <entry key="app/src/main/res/layouts/intro/layout/activity_main.xml" value="0.196875" />
         <entry key="app/src/main/res/layouts/intro/layout/activity_splash_screen.xml" value="0.196875" />
+        <entry key="app/src/main/res/layouts/intro/layout/bottom_back.xml" value="0.196875" />
+        <entry key="app/src/main/res/layouts/intro/layout/fragment_add.xml" value="0.196875" />
         <entry key="app/src/main/res/layouts/intro/layout/fragment_dashboard.xml" value="0.196875" />
+        <entry key="app/src/main/res/layouts/intro/layout/fragment_menu.xml" value="0.18177083333333333" />
+        <entry key="app/src/main/res/layouts/intro/layout/fragment_my_task.xml" value="0.196875" />
+        <entry key="app/src/main/res/layouts/intro/layout/fragment_profile.xml" value="0.196875" />
+        <entry key="app/src/main/res/layouts/intro/layout/fragment_quick.xml" value="0.196875" />
         <entry key="app/src/main/res/layouts/intro/layout/slider_screen.xml" value="0.196875" />
         <entry key="app/src/main/res/layouts/intro/menu/bottom_nav_menu.xml" value="0.196875" />
         <entry key="app/src/main/res/layouts/login_register/layout/activity_forget_password.xml" value="0.1" />

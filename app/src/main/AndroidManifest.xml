@@ -19,28 +19,26 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RegistrationActivity"
+            android:name=".login_register.RegistrationActivity"
             android:exported="true" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".intro.SplashScreen"
             android:exported="true"/>
         <activity
-            android:name=".SuccesfulActivity"
+            android:name=".login_register.SuccesfulActivity"
             android:exported="true" />
         <activity
-            android:name=".ResetPasswordActivity"
+            android:name=".login_register.ResetPasswordActivity"
             android:exported="true" />
         <activity
-            android:name=".ForgetPasswordActivity"
+            android:name=".login_register.ForgetPasswordActivity"
             android:exported="true" />
         <activity
-            android:name=".LoginActivity"
-            android:exported="true"
-            android:parentActivityName=".IntroActivity" />
+            android:name=".login_register.LoginActivity"
+            android:exported="true" />
         <activity
-            android:name=".IntroActivity"
-            android:exported="true"
-            android:screenOrientation="portrait" />
+            android:name=".intro.IntroActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

@@ -7,14 +7,16 @@
     tools:context=".MainActivity"
     android:background="@color/white">
 
-
+    <FrameLayout
+        android:id="@+id/fragmentContainerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/buttom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@color/purple_button"
         app:backgroundTint="@color/purple_button"
         app:fabCradleMargin="10dp"
         app:fabCradleRoundedCornerRadius="50dp">
@@ -33,7 +35,6 @@
 
     </com.google.android.material.bottomappbar.BottomAppBar>
 
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add"
         android:layout_width="wrap_content"
@@ -44,4 +45,5 @@
         app:maxImageSize="30dp"
         tools:ignore="SpeakableTextPresentCheck"
         android:contentDescription="ADD" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
