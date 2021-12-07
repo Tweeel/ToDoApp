@@ -2,7 +2,6 @@ package com.example.todoapp.login_register;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -44,12 +43,9 @@ public class LoginActivity extends AppCompatActivity {
 
         //setup login setup
         AppCompatButton login_button = (AppCompatButton) findViewById(R.id.login);
-        login_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intentlogin = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intentlogin);
-            }
+        login_button.setOnClickListener(v -> {
+            Intent intentlogin = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intentlogin);
         });
 
     }
