@@ -36,14 +36,15 @@
         <entry key="app/src/main/res/layouts/intro/drawable/bottom_back.xml" value="0.13796296296296295" />
         <entry key="app/src/main/res/layouts/intro/drawable/nav_back.xml" value="0.13240740740740742" />
         <entry key="app/src/main/res/layouts/intro/drawable/tablayout_back.xml" value="0.134375" />
+        <entry key="app/src/main/res/layouts/intro/layout/activity_intro.xml" value="0.196875" />
         <entry key="app/src/main/res/layouts/intro/layout/activity_main.xml" value="0.196875" />
         <entry key="app/src/main/res/layouts/intro/layout/activity_splash_screen.xml" value="0.196875" />
         <entry key="app/src/main/res/layouts/intro/layout/bottom_back.xml" value="0.196875" />
         <entry key="app/src/main/res/layouts/intro/layout/fragment_add.xml" value="0.196875" />
         <entry key="app/src/main/res/layouts/intro/layout/fragment_dashboard.xml" value="0.196875" />
-        <entry key="app/src/main/res/layouts/intro/layout/fragment_menu.xml" value="0.18177083333333333" />
+        <entry key="app/src/main/res/layouts/intro/layout/fragment_menu.xml" value="0.2" />
         <entry key="app/src/main/res/layouts/intro/layout/fragment_month.xml" value="0.196875" />
-        <entry key="app/src/main/res/layouts/intro/layout/fragment_my_task.xml" value="0.22" />
+        <entry key="app/src/main/res/layouts/intro/layout/fragment_my_task.xml" value="0.2" />
         <entry key="app/src/main/res/layouts/intro/layout/fragment_profile.xml" value="0.196875" />
         <entry key="app/src/main/res/layouts/intro/layout/fragment_quick.xml" value="0.196875" />
         <entry key="app/src/main/res/layouts/intro/layout/fragment_today.xml" value="0.196875" />
