@@ -14,6 +14,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import com.example.todoapp.fragments.AddFragment;
+import com.example.todoapp.fragments.MenuFragment;
+import com.example.todoapp.fragments.MyTaskFragment;
+import com.example.todoapp.fragments.ProfileFragment;
+import com.example.todoapp.fragments.QuickFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 

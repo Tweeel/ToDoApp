@@ -1,4 +1,4 @@
-package com.example.todoapp;
+package com.example.todoapp.fragments;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
