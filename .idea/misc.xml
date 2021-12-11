@@ -52,6 +52,7 @@
         <entry key="app/src/main/res/layouts/intro/layout/fragment_quick.xml" value="0.196875" />
         <entry key="app/src/main/res/layouts/intro/layout/fragment_today.xml" value="0.196875" />
         <entry key="app/src/main/res/layouts/intro/layout/slider_screen.xml" value="0.196875" />
+        <entry key="app/src/main/res/layouts/intro/layout/task_item.xml" value="0.22" />
         <entry key="app/src/main/res/layouts/intro/layout/toolbar.xml" value="0.196875" />
         <entry key="app/src/main/res/layouts/intro/menu/bottom_nav_menu.xml" value="0.196875" />
         <entry key="app/src/main/res/layouts/intro/menu/toolbar_menu.xml" value="0.196875" />
