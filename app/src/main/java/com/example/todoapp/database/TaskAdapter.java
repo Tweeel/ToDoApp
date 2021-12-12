@@ -1,9 +1,12 @@
 package com.example.todoapp.database;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -34,15 +37,44 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
         return new TaskHolder(itemView);
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull TaskHolder holder, int position) {
         if(tasks !=null){
         Task currentTask = tasks.get(position);
         holder.textViewTitle.setText(currentTask.getTitle());
         holder.textViewDescription.setText(currentTask.getDescription());
-        }else{
-            // Covers the case of data not being ready yet.
-            holder.textViewTitle.setText("no word");
+
+        switch (currentTask.getCategory()) {
+            case "1":
+                holder.layout.setBackgroundResource(R.color.button_beige);
+                holder.view.setBackgroundResource(R.drawable.uncheck_beige);
+                break;
+            case "2":
+                holder.layout.setBackgroundResource(R.color.button_blue);
+                holder.view.setBackgroundResource(R.drawable.check_blue);
+                holder.textViewTitle.setPaintFlags(holder.textViewTitle.getPaintFlags()
+                        | Paint.STRIKE_THRU_TEXT_FLAG);
+                holder.textViewDescription.setPaintFlags(holder.textViewDescription.getPaintFlags()
+                        | Paint.STRIKE_THRU_TEXT_FLAG);
+                break;
+            case "3":
+                holder.layout.setBackgroundResource(R.color.button_green);
+                holder.view.setBackgroundResource(R.drawable.uncheck_green);
+                break;
+            case "4":
+                holder.layout.setBackgroundResource(R.color.button_pink);
+                holder.view.setBackgroundResource(R.drawable.check_pink);
+                holder.textViewTitle.setPaintFlags(holder.textViewTitle.getPaintFlags()
+                        | Paint.STRIKE_THRU_TEXT_FLAG);
+                holder.textViewDescription.setPaintFlags(holder.textViewDescription.getPaintFlags()
+                        | Paint.STRIKE_THRU_TEXT_FLAG);
+                break;
+            case "5":
+                holder.layout.setBackgroundResource(R.color.button_purple);
+                holder.view.setBackgroundResource(R.drawable.uncheck_purple);
+                break;
+        }
         }
     }
 
@@ -69,11 +101,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
     class TaskHolder extends RecyclerView.ViewHolder{
         private TextView textViewTitle;
         private TextView textViewDescription;
+        private View view;
+        private LinearLayout layout;
 
         public TaskHolder(@NonNull View itemView) {
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.text_view_title);
             textViewDescription = itemView.findViewById(R.id.text_view_description);
+            layout = itemView.findViewById(R.id.color);
+            view = itemView.findViewById(R.id.image);
             itemView.setOnClickListener(v -> {
                 int position = getAdapterPosition();
                 if(listener != null && position != RecyclerView.NO_POSITION)
