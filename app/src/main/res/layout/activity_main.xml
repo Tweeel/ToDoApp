@@ -15,7 +15,8 @@
         android:id="@+id/fragmentContainerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?android:attr/actionBarSize"/>
+        android:layout_marginTop="?android:attr/actionBarSize"
+        android:layout_marginBottom="?android:attr/actionBarSize"/>
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/buttom"

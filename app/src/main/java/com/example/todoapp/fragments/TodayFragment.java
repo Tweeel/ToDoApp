@@ -4,11 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -60,15 +58,22 @@ public class TodayFragment extends Fragment {
         recyclerview.setAdapter(adapter);
 
         taskViewModel = new ViewModelProvider(requireActivity()).get(TaskViewModel.class);
+
+        //get the data from the addFragment in case of adding tasks
+        Bundle bundle = this.getArguments();
+        if(bundle != null){
+        String title = bundle.getString("title");
+        String description = bundle.getString("description");
+        String category = bundle.getString("category");
+        Task taskAdd = new Task(title, description,category);
+        taskViewModel.insert(taskAdd);
+        Toast.makeText(getContext(), "task has been added", Toast.LENGTH_LONG).show();
+        }
+        
         // Get all the words from the database
         // and associate them to the adapter.
         // Update the cached copy of the words in the adapter.
-        taskViewModel.getAllTasks().observe((LifecycleOwner) getContext(), new Observer<List<Task>>() {
-            @Override
-            public void onChanged(@Nullable List<Task> tasks) {
-                adapter.setTasks(tasks);
-            }
-        });
+        taskViewModel.getAllTasks().observe( getActivity(), tasks -> adapter.setTasks(tasks));
 
         return rootView;
     }

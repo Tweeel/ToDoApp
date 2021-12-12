@@ -35,8 +35,8 @@ public abstract class TaskDatabase extends RoomDatabase {
     //this part is to add some task for the first time when the database build
     private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback() {
         @Override
-        public void onOpen(@NonNull SupportSQLiteDatabase db) {
-            super.onOpen(db);
+        public void onCreate(@NonNull SupportSQLiteDatabase db) {
+            super.onCreate(db);
             new PopulateDbAsyncTask(instance).execute();
         }
     };
@@ -55,7 +55,6 @@ public abstract class TaskDatabase extends RoomDatabase {
             taskDao.insert(new Task("task 1","description 1" , "job"));
             taskDao.insert(new Task("task 2","description 2" , "studies"));
             taskDao.insert(new Task("task 3","description 3" , "random"));
-
             return null;
         }
     }
