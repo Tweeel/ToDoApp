@@ -20,7 +20,6 @@ public class Task {
     private String timesStart;
     private String timeEnd;
 
-
     public Task(String title, String description, String category) {
         this.title = title;
         this.description = description;

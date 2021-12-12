@@ -61,6 +61,7 @@ public class TodayFragment extends Fragment {
 
         //get the data from the addFragment in case of adding tasks
         Bundle bundle = this.getArguments();
+
         //check if the bundle is not empty
         if(bundle != null){
             String title = bundle.getString("title");
@@ -68,7 +69,7 @@ public class TodayFragment extends Fragment {
             String category = bundle.getString("category");
             int id = bundle.getInt("id");
             Task taskAdd = new Task(title, description,category);
-            //check if the id=-1 means that a new task has been created other wise a task has been edied
+            //check if the id=-1 means that a new task has been created other wise a task has been edited
             if(id!=-1){
                 taskAdd.setId(id);
                 taskViewModel.update(taskAdd);
@@ -84,6 +85,7 @@ public class TodayFragment extends Fragment {
         // Update the cached copy of the words in the adapter.
         taskViewModel.getAllTasks().observe( getActivity(), tasks -> adapter.setTasks(tasks));
 
+        //add the onswip to delete the task
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT |ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder

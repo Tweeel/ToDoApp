@@ -31,7 +31,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
     @Override
     public TaskHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.task_item,parent,false);
-//        View itemView = mInflater.inflate(R.layout.task_item, parent, false);
         return new TaskHolder(itemView);
     }
 
@@ -75,15 +74,10 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.text_view_title);
             textViewDescription = itemView.findViewById(R.id.text_view_description);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    int position = getAdapterPosition();
-                    if(listener != null && position != RecyclerView.NO_POSITION)
-                        listener.onItemClick(tasks.get(position));
-                }
+            itemView.setOnClickListener(v -> {
+                int position = getAdapterPosition();
+                if(listener != null && position != RecyclerView.NO_POSITION)
+                    listener.onItemClick(tasks.get(position));
             });
         }
     }

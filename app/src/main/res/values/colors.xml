@@ -27,11 +27,11 @@
     <color name="dark">#313131</color>
 
     /*Custom buttons Colors */
-    <color name="blue_button">#6174F9</color>
-    <color name="pink_button">#E52B6A</color>
-    <color name="green_button">#5BBB56</color>
-    <color name="purple_button">#3D3B62</color>
-    <color name="beige_button">#F5CA90</color>
+    <color name="button_blue">#6174F9</color>
+    <color name="button_pink">#E52B6A</color>
+    <color name="button_green">#5BBB56</color>
+    <color name="button_purple">#3D3B62</color>
+    <color name="button_beige">#F5CA90</color>
 
 
 </resources>
