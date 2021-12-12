@@ -61,6 +61,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
         notifyDataSetChanged();
     }
 
+    //to get the item from the id
+    public Task getTaskAt(int position){
+        return tasks.get(position);
+    }
+
     class TaskHolder extends RecyclerView.ViewHolder{
         private TextView textViewTitle;
         private TextView textViewDescription;
@@ -71,4 +76,5 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
             textViewDescription = itemView.findViewById(R.id.text_view_description);
         }
     }
+
 }
