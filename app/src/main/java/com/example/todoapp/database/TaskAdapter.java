@@ -21,6 +21,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
 
     private List<Task> tasks ; // Cached copy of words
     private final LayoutInflater mInflater;
+    private onItemClickListener listener;
 
     public TaskAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
@@ -74,7 +75,24 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
             super(itemView);
             textViewTitle = itemView.findViewById(R.id.text_view_title);
             textViewDescription = itemView.findViewById(R.id.text_view_description);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if(listener != null && position != RecyclerView.NO_POSITION)
+                        listener.onItemClick(tasks.get(position));
+                }
+            });
         }
     }
 
+    public interface onItemClickListener {
+        void onItemClick(Task task);
+    }
+
+    public void setOnItemClickListener(onItemClickListener listener){
+        this.listener = listener;
+    }
 }

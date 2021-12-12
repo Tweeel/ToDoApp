@@ -1,5 +1,6 @@
 package com.example.todoapp.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -14,14 +15,10 @@ import androidx.fragment.app.Fragment;
 
 import com.example.todoapp.R;
 
-public class AddFragment extends Fragment {
-
-    public static final String EXTRA_TITLE =
-            "com.example.android.todoapp.EXTRA_TITLE";
-    public static final String EXTRA_DESCRIPTION =
-            "com.example.android.todoapp.EXTRA_DESCRIPTION";
+public class AddEditFragment extends Fragment {
 
     private EditText TitleView,descriptionView,categoryView;
+    private Button button;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,6 +27,7 @@ public class AddFragment extends Fragment {
         setHasOptionsMenu(true);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -40,13 +38,27 @@ public class AddFragment extends Fragment {
         TitleView = rootView.findViewById(R.id.editTextTextEmailAddress);
         descriptionView = rootView.findViewById(R.id.editTextTextDescription);
         categoryView = rootView.findViewById(R.id.editTextTextCategory);
+        button = rootView.findViewById(R.id.add);
 
-        final Button button = rootView.findViewById(R.id.add);
+        //get the data from the today in case of editing tasks
+        Bundle bundle = this.getArguments();
+        int id;
+        //if there is data to receive we put the id of the of the task that we want to modify in the bundle
+        //other wise we send an id=-1 that means a new one created
+        if(bundle != null){
+            id = bundle.getInt("id");
+            TitleView.setText(bundle.getString("title"));
+            descriptionView.setText(bundle.getString("description"));
+            categoryView.setText(bundle.getString("category"));
+        }else  id = -1 ;
+
+        //call the function when click the button
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                saveTask();
+                saveTask(id);
             }
         });
+
         return rootView;
     }
 
@@ -58,7 +70,7 @@ public class AddFragment extends Fragment {
     }
 
     //function to sane tasks
-    private void saveTask() {
+    private void saveTask(int id) {
         String title = TitleView.getText().toString();
         String description = descriptionView.getText().toString();
         String category = categoryView.getText().toString();
@@ -72,6 +84,7 @@ public class AddFragment extends Fragment {
         bundle.putString("title",title);
         bundle.putString("description",description);
         bundle.putString("category",category);
+        bundle.putInt("id",id);
         TodayFragment today = new TodayFragment();
         today.setArguments(bundle);
         getParentFragmentManager().beginTransaction().replace(R.id.fragmentContainerView,today).commit();

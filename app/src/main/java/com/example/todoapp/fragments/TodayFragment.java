@@ -61,13 +61,22 @@ public class TodayFragment extends Fragment {
 
         //get the data from the addFragment in case of adding tasks
         Bundle bundle = this.getArguments();
+        //check if the bundle is not empty
         if(bundle != null){
-        String title = bundle.getString("title");
-        String description = bundle.getString("description");
-        String category = bundle.getString("category");
-        Task taskAdd = new Task(title, description,category);
-        taskViewModel.insert(taskAdd);
-        Toast.makeText(getContext(), "task has been added", Toast.LENGTH_LONG).show();
+            String title = bundle.getString("title");
+            String description = bundle.getString("description");
+            String category = bundle.getString("category");
+            int id = bundle.getInt("id");
+            Task taskAdd = new Task(title, description,category);
+            //check if the id=-1 means that a new task has been created other wise a task has been edied
+            if(id!=-1){
+                taskAdd.setId(id);
+                taskViewModel.update(taskAdd);
+                Toast.makeText(getContext(), "task has been edited", Toast.LENGTH_LONG).show();
+            }else {
+                taskViewModel.insert(taskAdd);
+                Toast.makeText(getContext(), "task has been added", Toast.LENGTH_LONG).show();
+            }
         }
         
         // Get all the words from the database
@@ -88,6 +97,18 @@ public class TodayFragment extends Fragment {
                     Toast.makeText(getContext(), "task has been deleted", Toast.LENGTH_LONG).show();
             }
         }).attachToRecyclerView(recyclerview);
+
+        adapter.setOnItemClickListener(task -> {
+            //send data to the today fragment
+            Bundle bundle1 = new Bundle();
+            bundle1.putString("title",task.getTitle());
+            bundle1.putString("description",task.getDescription());
+            bundle1.putString("category",task.getCategory());
+            bundle1.putInt("id",task.getId());
+            AddEditFragment today = new AddEditFragment();
+            today.setArguments(bundle1);
+            getParentFragmentManager().beginTransaction().replace(R.id.fragmentContainerView,today).commit();
+        });
 
         return rootView;
     }

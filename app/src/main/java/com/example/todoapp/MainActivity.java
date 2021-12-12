@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
-import com.example.todoapp.fragments.AddFragment;
+import com.example.todoapp.fragments.AddEditFragment;
 import com.example.todoapp.fragments.MenuFragment;
 import com.example.todoapp.fragments.MyTaskFragment;
 import com.example.todoapp.fragments.ProfileFragment;
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         //setup fab
         FloatingActionButton addFAB = findViewById(R.id.add);
         addFAB.setOnClickListener(v -> {
-            Fragment fragment = new AddFragment();
+            Fragment fragment = new AddEditFragment();
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragmentContainerView,fragment).commit();
             mTitle.setText("New Task");
