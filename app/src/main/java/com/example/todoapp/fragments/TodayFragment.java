@@ -1,6 +1,8 @@
 package com.example.todoapp.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,13 +15,10 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.todoapp.AddTask;
 import com.example.todoapp.R;
-import com.example.todoapp.database.Task;
 import com.example.todoapp.database.TaskAdapter;
 import com.example.todoapp.database.TaskViewModel;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This fragment displays a list of tasks in a RecyclerView.
@@ -37,7 +36,12 @@ public class TodayFragment extends Fragment {
     private TaskViewModel taskViewModel;
     private RecyclerView recyclerview;
     private TaskAdapter adapter;
-    List<Task> tasks = new ArrayList<>();
+
+    public static final String EXTRA_TITLE = "com.example.todoapp.EXTRA_TITLE";
+    public static final String EXTRA_DESCRIPTION = "com.example.todoapp.EXTRA_DESCRIPTION";
+    public static final String EXTRA_CATEGORY = "com.example.todoapp.EXTRA_CATEGORY";
+    public static final String EXTRA_ID = "com.example.todoapp.EXTRA_ID";
+    public static final int ADD_NOTE_REQUEST = 1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,30 +63,9 @@ public class TodayFragment extends Fragment {
         recyclerview.setAdapter(adapter);
         taskViewModel = new ViewModelProvider(requireActivity()).get(TaskViewModel.class);
 
-        //get the data from the addFragment in case of adding tasks
-        Bundle bundle = this.getArguments();
-
-        //check if the bundle is not empty
-        if(bundle != null){
-            String title = bundle.getString("title");
-            String description = bundle.getString("description");
-            String category = bundle.getString("category");
-            int id = bundle.getInt("id");
-            Task taskAdd = new Task(title, description,category);
-            //check if the id=-1 means that a new task has been created other wise a task has been edited
-            if(id!=-1){
-                taskAdd.setId(id);
-                taskViewModel.update(taskAdd);
-                Toast.makeText(getContext(), "task has been edited", Toast.LENGTH_LONG).show();
-            }else {
-                taskViewModel.insert(taskAdd);
-                Toast.makeText(getContext(), "task has been added", Toast.LENGTH_LONG).show();
-            }
-        }
-        
+        // Update the cached copy of the words in the adapter.
         // Get all the words from the database
         // and associate them to the adapter.
-        // Update the cached copy of the words in the adapter.
         taskViewModel.getAllTasks().observe( getActivity(), tasks -> adapter.setTasks(tasks));
 
         //add the onswip to delete the task
@@ -100,18 +83,21 @@ public class TodayFragment extends Fragment {
             }
         }).attachToRecyclerView(recyclerview);
 
+        //add onclick to edit the task
         adapter.setOnItemClickListener(task -> {
-            //send data to the today fragment
-            Bundle bundle1 = new Bundle();
-            bundle1.putString("title",task.getTitle());
-            bundle1.putString("description",task.getDescription());
-            bundle1.putString("category",task.getCategory());
-            bundle1.putInt("id",task.getId());
-            AddEditFragment today = new AddEditFragment();
-            today.setArguments(bundle1);
-            getParentFragmentManager().beginTransaction().replace(R.id.fragmentContainerView,today).commit();
-        });
+            Intent intent = new Intent(getActivity(), AddTask.class);
+            intent.putExtra(EXTRA_TITLE, task.getTitle());
+            intent.putExtra(EXTRA_DESCRIPTION, task.getDescription());
+            intent.putExtra(EXTRA_CATEGORY, task.getCategory());
+            intent.putExtra(EXTRA_ID, Integer.toString(task.getId()));
 
+            Log.d("test", "title want to edit  = "+task.getTitle());
+            Log.d("test", "description want to edit  = "+task.getDescription());
+            Log.d("test", "category want to edit  = "+task.getCategory());
+            Log.d("test", "id want to edit  = "+task.getId());
+
+            startActivity(intent);
+        });
         return rootView;
     }
 }
