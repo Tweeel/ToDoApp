@@ -52,9 +52,11 @@ public abstract class TaskDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(Void... Voids) {
             taskDao.deleteAllTasks();
-            taskDao.insert(new Task("task 1","description 1" , "job"));
-            taskDao.insert(new Task("task 2","description 2" , "studies"));
-            taskDao.insert(new Task("task 3","description 3" , "random"));
+            taskDao.insert(new Task("task 1","description 1" , "1"));
+            taskDao.insert(new Task("task 2","description 2" , "2"));
+            taskDao.insert(new Task("task 3","description 3" , "3"));
+            taskDao.insert(new Task("task 3","description 3" , "4"));
+            taskDao.insert(new Task("task 3","description 3" , "5"));
             return null;
         }
     }

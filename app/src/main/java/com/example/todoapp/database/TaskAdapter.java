@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -48,32 +49,77 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
             switch (currentTask.getCategory()) {
                 case "1":
                     holder.layout.setBackgroundResource(R.color.button_beige);
-                    holder.view.setBackgroundResource(R.drawable.uncheck_beige);
+                    if (currentTask.getState().equals("0")){
+                        holder.view.setBackgroundResource(R.drawable.uncheck_beige);
+                    holder.textViewTitle.setPaintFlags(0);
+                    holder.textViewDescription.setPaintFlags(0);
+                    }else{
+                        holder.view.setBackgroundResource(R.drawable.check_beige);
+                        holder.textViewTitle.setPaintFlags(holder.textViewTitle.getPaintFlags()
+                                | Paint.STRIKE_THRU_TEXT_FLAG);
+                        holder.textViewDescription.setPaintFlags(holder.textViewDescription.getPaintFlags()
+                                | Paint.STRIKE_THRU_TEXT_FLAG);
+                    }
                     break;
                 case "2":
                     holder.layout.setBackgroundResource(R.color.button_blue);
-                    holder.view.setBackgroundResource(R.drawable.check_blue);
-                    holder.textViewTitle.setPaintFlags(holder.textViewTitle.getPaintFlags()
-                            | Paint.STRIKE_THRU_TEXT_FLAG);
-                    holder.textViewDescription.setPaintFlags(holder.textViewDescription.getPaintFlags()
-                            | Paint.STRIKE_THRU_TEXT_FLAG);
+
+                    if(currentTask.getState().equals("0")){
+                        holder.view.setBackgroundResource(R.drawable.uncheck_blue);
+                        holder.textViewTitle.setPaintFlags(0);
+                        holder.textViewDescription.setPaintFlags(0);
+                    }
+                    else{
+                        holder.view.setBackgroundResource(R.drawable.check_blue);
+                        holder.textViewTitle.setPaintFlags(holder.textViewTitle.getPaintFlags()
+                                | Paint.STRIKE_THRU_TEXT_FLAG);
+                        holder.textViewDescription.setPaintFlags(holder.textViewDescription.getPaintFlags()
+                                | Paint.STRIKE_THRU_TEXT_FLAG);
+                    }
                     break;
                 case "3":
                     holder.layout.setBackgroundResource(R.color.button_green);
-                    holder.view.setBackgroundResource(R.drawable.uncheck_green);
-                    break;
+                    if(currentTask.getState().equals("0")){
+                        holder.view.setBackgroundResource(R.drawable.uncheck_green);
+                        holder.textViewTitle.setPaintFlags(0);
+                        holder.textViewDescription.setPaintFlags(0);
+                    }
+                    else{
+                        holder.view.setBackgroundResource(R.drawable.check_green);
+                        holder.textViewTitle.setPaintFlags(holder.textViewTitle.getPaintFlags()
+                                | Paint.STRIKE_THRU_TEXT_FLAG);
+                        holder.textViewDescription.setPaintFlags(holder.textViewDescription.getPaintFlags()
+                                | Paint.STRIKE_THRU_TEXT_FLAG);
+                    }                    break;
                 case "4":
                     holder.layout.setBackgroundResource(R.color.button_pink);
-                    holder.view.setBackgroundResource(R.drawable.check_pink);
-                    holder.textViewTitle.setPaintFlags(holder.textViewTitle.getPaintFlags()
-                            | Paint.STRIKE_THRU_TEXT_FLAG);
-                    holder.textViewDescription.setPaintFlags(holder.textViewDescription.getPaintFlags()
-                            | Paint.STRIKE_THRU_TEXT_FLAG);
+                    if(currentTask.getState().equals("0")){
+                        holder.view.setBackgroundResource(R.drawable.uncheck_pink);
+                        holder.textViewTitle.setPaintFlags(0);
+                        holder.textViewDescription.setPaintFlags(0);
+                    }
+                    else{
+                        holder.view.setBackgroundResource(R.drawable.check_pink);
+                        holder.textViewTitle.setPaintFlags(holder.textViewTitle.getPaintFlags()
+                                | Paint.STRIKE_THRU_TEXT_FLAG);
+                        holder.textViewDescription.setPaintFlags(holder.textViewDescription.getPaintFlags()
+                                | Paint.STRIKE_THRU_TEXT_FLAG);
+                    }
                     break;
                 case "5":
                     holder.layout.setBackgroundResource(R.color.button_purple);
-                    holder.view.setBackgroundResource(R.drawable.uncheck_purple);
-                    break;
+                    if(currentTask.getState().equals("0")){
+                        holder.view.setBackgroundResource(R.drawable.uncheck_purple);
+                        holder.textViewTitle.setPaintFlags(0);
+                        holder.textViewDescription.setPaintFlags(0);
+                    }
+                    else{
+                        holder.view.setBackgroundResource(R.drawable.check_purple);
+                        holder.textViewTitle.setPaintFlags(holder.textViewTitle.getPaintFlags()
+                                | Paint.STRIKE_THRU_TEXT_FLAG);
+                        holder.textViewDescription.setPaintFlags(holder.textViewDescription.getPaintFlags()
+                                | Paint.STRIKE_THRU_TEXT_FLAG);
+                    }                    break;
             }
         }
     }
@@ -103,6 +149,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
         private TextView textViewDescription;
         private View view;
         private LinearLayout layout;
+        private RelativeLayout EditLayout;
 
         public TaskHolder(@NonNull View itemView) {
             super(itemView);
@@ -110,17 +157,23 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
             textViewDescription = itemView.findViewById(R.id.text_view_description);
             layout = itemView.findViewById(R.id.color);
             view = itemView.findViewById(R.id.image);
+            EditLayout = itemView.findViewById(R.id.EditLayout);
 
-            itemView.setOnClickListener(v -> {
+            EditLayout.setOnClickListener(v -> {
                 int position = getAdapterPosition();
-                    listener.onItemClick(tasks.get(position));
+                listener.onItemClick(tasks.get(position));
+            });
 
+            view.setOnClickListener(v -> {
+                int position = getAdapterPosition();
+                listener.onDoneClick(tasks.get(position));
             });
         }
     }
 
     public interface OnItemClickListener {
         void onItemClick(Task task);
+        void onDoneClick(Task task);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {

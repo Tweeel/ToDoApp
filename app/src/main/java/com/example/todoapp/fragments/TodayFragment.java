@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.todoapp.AddTask;
 import com.example.todoapp.R;
+import com.example.todoapp.database.Task;
 import com.example.todoapp.database.TaskAdapter;
 import com.example.todoapp.database.TaskViewModel;
 
@@ -84,19 +85,30 @@ public class TodayFragment extends Fragment {
         }).attachToRecyclerView(recyclerview);
 
         //add onclick to edit the task
-        adapter.setOnItemClickListener(task -> {
-            Intent intent = new Intent(getActivity(), AddTask.class);
-            intent.putExtra(EXTRA_TITLE, task.getTitle());
-            intent.putExtra(EXTRA_DESCRIPTION, task.getDescription());
-            intent.putExtra(EXTRA_CATEGORY, task.getCategory());
-            intent.putExtra(EXTRA_ID, Integer.toString(task.getId()));
+        adapter.setOnItemClickListener(new TaskAdapter.OnItemClickListener(){
 
-            Log.d("test", "title want to edit  = "+task.getTitle());
-            Log.d("test", "description want to edit  = "+task.getDescription());
-            Log.d("test", "category want to edit  = "+task.getCategory());
-            Log.d("test", "id want to edit  = "+task.getId());
+            @Override
+            public void onItemClick(Task task) {
+                Intent intent = new Intent(getActivity(), AddTask.class);
+                intent.putExtra(EXTRA_TITLE, task.getTitle());
+                intent.putExtra(EXTRA_DESCRIPTION, task.getDescription());
+                intent.putExtra(EXTRA_CATEGORY, task.getCategory());
+                intent.putExtra(EXTRA_ID, Integer.toString(task.getId()));
+                Log.d("test", "state  = "+task.getState());
+                startActivity(intent);
+            }
 
-            startActivity(intent);
+            @Override
+            public void onDoneClick(Task task) {
+                if(task.getState().equals("0")){
+                    task.setState("1");
+                    taskViewModel.update(task);
+                }else{
+                    task.setState("0");
+                    taskViewModel.update(task);
+                }
+                Log.d("test", "state  = "+task.getState());
+            }
         });
         return rootView;
     }

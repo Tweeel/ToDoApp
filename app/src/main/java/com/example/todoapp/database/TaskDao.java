@@ -28,5 +28,8 @@ public interface TaskDao {
     @Query("SELECT * FROM task_table ORDER BY title ASC")
     LiveData<List<Task>> getAllTasks();
 
+
+
+
     //query for display today task and a choosen date tasks and only completed task and only incompleted tasks
 }

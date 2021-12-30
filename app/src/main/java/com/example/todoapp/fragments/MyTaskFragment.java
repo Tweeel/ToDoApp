@@ -50,7 +50,6 @@ public class MyTaskFragment extends Fragment {
             String description = bundle.getString("description");
             String category = bundle.getString("category");
             String id = bundle.getString("id");
-            Log.d("test", "id in my task = " + id);
             // Set up the RecyclerView.
             TaskViewModel taskViewModel = new ViewModelProvider(requireActivity()).get(TaskViewModel.class);
             //creat a task with the new data

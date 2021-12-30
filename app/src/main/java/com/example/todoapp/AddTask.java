@@ -60,7 +60,6 @@ public class AddTask extends AppCompatActivity {
             String description = intent.getStringExtra(TodayFragment.EXTRA_DESCRIPTION);
             String category = intent.getStringExtra(TodayFragment.EXTRA_CATEGORY);
             id = intent.getStringExtra(TodayFragment.EXTRA_ID);
-            Log.d("test", "id in add task / id received  = "+ id);
             TitleView.setText(title);
             descriptionView.setText(description);
             categoryView.setText(category);
@@ -68,7 +67,6 @@ public class AddTask extends AppCompatActivity {
             header.setText("Edit your Task");
             button.setText("Edit");
         }else {
-            Log.d("test", "we are in add new task");
             id = "0";
         }
 
@@ -95,10 +93,6 @@ public class AddTask extends AppCompatActivity {
             data.putExtra(EXTRA_DESCRIPTION, description);
             data.putExtra(EXTRA_CATEGORY, category);
             data.putExtra(EXTRA_ID, id);
-            Log.d("test", title);
-            Log.d("test", description);
-            Log.d("test", category);
-            Log.d("test", id);
             startActivity(data);
             finish();
         }

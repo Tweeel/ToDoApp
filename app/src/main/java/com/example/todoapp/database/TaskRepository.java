@@ -34,6 +34,7 @@ public class TaskRepository {
         return allTasks;
     }
 
+
     private static class InssertTaskTask extends AsyncTask<Task,Void,Void>{
         private TaskDao taskDao;
 
@@ -47,6 +48,7 @@ public class TaskRepository {
             return null;
         }
     }
+
     private static class updateTaskTask extends AsyncTask<Task,Void,Void>{
         private TaskDao taskDao;
 
@@ -60,6 +62,7 @@ public class TaskRepository {
             return null;
         }
     }
+
     private static class DeleteTaskTask extends AsyncTask<Task,Void,Void>{
         private TaskDao taskDao;
 
@@ -73,6 +76,7 @@ public class TaskRepository {
             return null;
         }
     }
+
     private static class DeleteAllTaskTask extends AsyncTask<Void,Void,Void>{
         private TaskDao taskDao;
 

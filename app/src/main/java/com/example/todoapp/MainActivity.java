@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
                 &&intent.getStringExtra(AddTask.EXTRA_DESCRIPTION)!=null
                 &&intent.getStringExtra(AddTask.EXTRA_CATEGORY)!=null
                 &&intent.getStringExtra(AddTask.EXTRA_ID)!=null){
-            Log.d("test", "I'm receiving data");
             String title = intent.getStringExtra(AddTask.EXTRA_TITLE);
             String description = intent.getStringExtra(AddTask.EXTRA_DESCRIPTION);
             String category = intent.getStringExtra(AddTask.EXTRA_CATEGORY);
@@ -73,8 +72,7 @@ public class MainActivity extends AppCompatActivity {
             datareceived.putString("id",id);
             fragment.setArguments(datareceived);
             fragmentTransaction.replace(R.id.fragmentContainerView, fragment).commit();
-        }else Log.d("test", "data is empty");
-
+        }
 
         /*setup bottom navigation area*/
         //set the navigation view background color to transparent
