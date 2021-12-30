@@ -5,12 +5,14 @@
     android:layout_height="wrap_content"
     android:layout_marginEnd="8dp"
     android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp">
+    android:layout_marginTop="8dp"
+    android:background="@color/white">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp">
+        android:padding="8dp"
+        android:background="@color/white">
 
         <View
             android:id="@+id/image"
@@ -30,7 +32,8 @@
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_toEndOf="@+id/image"
-            android:layout_toRightOf="@+id/image">
+            android:layout_toRightOf="@+id/image"
+            android:background="@color/white">
 
             <TextView
                 android:id="@+id/text_view_title"
@@ -40,17 +43,19 @@
                 android:text="title"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:background="@color/white"/>
 
             <TextView
                 android:id="@+id/text_view_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/text_view_title"
-
                 android:layout_marginTop="8dp"
+                android:textColor="@color/grey_mate"
                 android:text="description"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:background="@color/white"/>
 
             <LinearLayout
                 android:id="@+id/color"
@@ -61,7 +66,7 @@
                 android:layout_centerVertical="true"
                 android:background="@color/button_beige"
                 android:foregroundGravity="center_vertical"
-                android:orientation="horizontal" />
+                android:orientation="horizontal"/>
         </RelativeLayout>
 
     </RelativeLayout>

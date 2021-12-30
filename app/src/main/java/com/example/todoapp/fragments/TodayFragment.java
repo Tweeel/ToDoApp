@@ -107,7 +107,6 @@ public class TodayFragment extends Fragment {
                     task.setState("0");
                     taskViewModel.update(task);
                 }
-                Log.d("test", "state  = "+task.getState());
             }
         });
         return rootView;

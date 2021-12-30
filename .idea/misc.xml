@@ -5,7 +5,11 @@
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.1685185185185185" />
         <entry key="..\:/Users/houss/AndroidStudioProjects/ToDoApp/app/src/main/res/layout/activity_main.xml" value="0.17708333333333334" />
-        <entry key="..\:/Users/houss/AndroidStudioProjects/ToDoApp/app/src/main/res/layouts/intro/layout/task_item.xml" value="0.1403985507246377" />
+        <entry key="..\:/Users/houss/AndroidStudioProjects/ToDoApp/app/src/main/res/layouts/intro/drawable/check_beige.xml" value="0.2203125" />
+        <entry key="..\:/Users/houss/AndroidStudioProjects/ToDoApp/app/src/main/res/layouts/intro/drawable/check_black.xml" value="0.2203125" />
+        <entry key="..\:/Users/houss/AndroidStudioProjects/ToDoApp/app/src/main/res/layouts/intro/drawable/uncheck_beige.xml" value="0.2203125" />
+        <entry key="..\:/Users/houss/AndroidStudioProjects/ToDoApp/app/src/main/res/layouts/intro/drawable/uncheck_black.xml" value="0.2203125" />
+        <entry key="..\:/Users/houss/AndroidStudioProjects/ToDoApp/app/src/main/res/layouts/intro/layout/task_item.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/add.xml" value="0.1712962962962963" />
         <entry key="app/src/main/res/drawable/arrow_back_24.xml" value="0.1638888888888889" />
         <entry key="app/src/main/res/drawable/back_round_pink.xml" value="0.17685185185185184" />

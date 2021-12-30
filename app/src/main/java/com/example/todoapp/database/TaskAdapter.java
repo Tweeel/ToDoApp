@@ -119,7 +119,23 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
                                 | Paint.STRIKE_THRU_TEXT_FLAG);
                         holder.textViewDescription.setPaintFlags(holder.textViewDescription.getPaintFlags()
                                 | Paint.STRIKE_THRU_TEXT_FLAG);
-                    }                    break;
+                    }
+                    break;
+                default:
+                    holder.layout.setBackgroundResource(R.color.black);
+                    if(currentTask.getState().equals("0")){
+                        holder.view.setBackgroundResource(R.drawable.uncheck_black);
+                        holder.textViewTitle.setPaintFlags(0);
+                        holder.textViewDescription.setPaintFlags(0);
+                    }
+                    else{
+                        holder.view.setBackgroundResource(R.drawable.check_black);
+                        holder.textViewTitle.setPaintFlags(holder.textViewTitle.getPaintFlags()
+                                | Paint.STRIKE_THRU_TEXT_FLAG);
+                        holder.textViewDescription.setPaintFlags(holder.textViewDescription.getPaintFlags()
+                                | Paint.STRIKE_THRU_TEXT_FLAG);
+                    }
+                    break;
             }
         }
     }
