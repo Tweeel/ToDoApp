@@ -3,6 +3,7 @@ package com.example.todoapp.database;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Paint;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,11 +25,13 @@ import java.util.List;
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
 
     private List<Task> tasks; // Cached copy of words
-    private final LayoutInflater mInflater;
     private OnItemClickListener listener;
 
     public TaskAdapter(Context context) {
-        mInflater = LayoutInflater.from(context);
+        LayoutInflater mInflater = LayoutInflater.from(context);
+    }
+
+    public TaskAdapter() {
     }
 
     @NonNull
@@ -161,11 +164,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
     }
 
     class TaskHolder extends RecyclerView.ViewHolder {
-        private TextView textViewTitle;
-        private TextView textViewDescription;
-        private View view;
-        private LinearLayout layout;
-        private RelativeLayout EditLayout;
+        private final TextView textViewTitle;
+        private final TextView textViewDescription;
+        private final View view;
+        private final LinearLayout layout;
+        private final RelativeLayout EditLayout;
 
         public TaskHolder(@NonNull View itemView) {
             super(itemView);

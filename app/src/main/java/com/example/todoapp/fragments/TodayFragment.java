@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,9 +18,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.todoapp.AddTask;
 import com.example.todoapp.R;
+import com.example.todoapp.TaskList;
 import com.example.todoapp.database.Task;
 import com.example.todoapp.database.TaskAdapter;
 import com.example.todoapp.database.TaskViewModel;
+import com.example.todoapp.database.TodayAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This fragment displays a list of tasks in a RecyclerView.
@@ -36,13 +42,12 @@ public class TodayFragment extends Fragment {
 
     private TaskViewModel taskViewModel;
     private RecyclerView recyclerview;
-    private TaskAdapter adapter;
+    private TodayAdapter adapterParent;
 
     public static final String EXTRA_TITLE = "com.example.todoapp.EXTRA_TITLE";
     public static final String EXTRA_DESCRIPTION = "com.example.todoapp.EXTRA_DESCRIPTION";
     public static final String EXTRA_CATEGORY = "com.example.todoapp.EXTRA_CATEGORY";
     public static final String EXTRA_ID = "com.example.todoapp.EXTRA_ID";
-    public static final int ADD_NOTE_REQUEST = 1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,18 +64,45 @@ public class TodayFragment extends Fragment {
 
         // Set up the RecyclerView.
         recyclerview = rootView.findViewById(R.id.recycler_view);
-        adapter = new TaskAdapter(getContext());
+        adapterParent = new TodayAdapter(getContext());
+        TaskAdapter adapterChild = new TaskAdapter(getContext());
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerview.setAdapter(adapter);
+        recyclerview.setAdapter(adapterParent);
         taskViewModel = new ViewModelProvider(requireActivity()).get(TaskViewModel.class);
+        List<TaskList> categories = new ArrayList<>();
+        TaskList completedTasks = new TaskList("Completed Tasks",null);
+        TaskList incompletedTasks = new TaskList("Incompleted Tasks",null);
+        List<Task> intask = new ArrayList<>();
+        List<Task> comtask = new ArrayList<>();
+
 
         // Update the cached copy of the words in the adapter.
         // Get all the words from the database
         // and associate them to the adapter.
-        taskViewModel.getAllTasks().observe( getActivity(), tasks -> adapter.setTasks(tasks));
+        taskViewModel.getAllTasks().observe( getActivity(), new Observer<List<Task>>() {
+            @Override
+            public void onChanged(List<Task> tasks) {
+                for(Task task : tasks){
+                    if(task.getState().equals("0")) {
+                        intask.add(task);
+                        incompletedTasks.setTasks(intask);
+                    } else{
+                        comtask.add(task);
+                        completedTasks.setTasks(comtask);
+                    }
+                }
+
+                categories.add(incompletedTasks);
+                categories.add(completedTasks);
+
+                adapterParent.setCategory(categories);
+            }
+        });
+
 
         //add the onswip to delete the task
-        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT |ItemTouchHelper.RIGHT) {
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0
+                ,ItemTouchHelper.LEFT |ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder
                     , @NonNull RecyclerView.ViewHolder target) {
@@ -79,13 +111,13 @@ public class TodayFragment extends Fragment {
 
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                    taskViewModel.delete(adapter.getTaskAt(viewHolder.getAdapterPosition()));
+                    taskViewModel.delete(adapterChild.getTaskAt(viewHolder.getAdapterPosition()));
                     Toast.makeText(getContext(), "task has been deleted", Toast.LENGTH_LONG).show();
             }
         }).attachToRecyclerView(recyclerview);
 
         //add onclick to edit the task
-        adapter.setOnItemClickListener(new TaskAdapter.OnItemClickListener(){
+        adapterChild.setOnItemClickListener(new TaskAdapter.OnItemClickListener(){
 
             @Override
             public void onItemClick(Task task) {

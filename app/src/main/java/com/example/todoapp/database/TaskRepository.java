@@ -11,11 +11,15 @@ public class TaskRepository {
 
     private TaskDao taskDao;
     private LiveData<List<Task>> allTasks;
+    private LiveData<List<Task>> completedTasks;
+    private LiveData<List<Task>> inCompletedTasks;
 
     public  TaskRepository (Application application){
         TaskDatabase database = TaskDatabase.getInstance(application);
         taskDao = database.taskDao();
         allTasks = taskDao.getAllTasks();
+        completedTasks = taskDao.getCompletedTasks();
+        inCompletedTasks = taskDao.getIncompletedTasks();
     }
 
     public void insert(Task task){
@@ -32,6 +36,12 @@ public class TaskRepository {
     }
     public LiveData<List<Task>> getAllTasks() {
         return allTasks;
+    }
+    public LiveData<List<Task>> getCompletedTasks() {
+        return completedTasks;
+    }
+    public LiveData<List<Task>> getIncompletedTasks() {
+        return inCompletedTasks;
     }
 
 
