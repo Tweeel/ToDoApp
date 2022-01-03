@@ -179,7 +179,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
             EditLayout = itemView.findViewById(R.id.EditLayout);
 
             EditLayout.setOnClickListener(v -> {
-                int position = getAdapterPosition();
+                Integer position = getAdapterPosition();
+                Log.d("test",Integer.toString(position));
                 listener.onItemClick(tasks.get(position));
             });
 

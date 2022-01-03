@@ -39,12 +39,12 @@
                 android:id="@+id/text_view_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/white"
                 android:maxLines="1"
                 android:text="title"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:background="@color/white"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/text_view_description"
@@ -52,10 +52,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/text_view_title"
                 android:layout_marginTop="8dp"
-                android:textColor="@color/grey_mate"
+                android:background="@color/white"
                 android:text="description"
-                android:textSize="15sp"
-                android:background="@color/white"/>
+                android:textColor="@color/grey_mate"
+                android:textSize="15sp" />
 
             <LinearLayout
                 android:id="@+id/color"
@@ -66,7 +66,7 @@
                 android:layout_centerVertical="true"
                 android:background="@color/button_beige"
                 android:foregroundGravity="center_vertical"
-                android:orientation="horizontal"/>
+                android:orientation="horizontal" />
         </RelativeLayout>
 
     </RelativeLayout>

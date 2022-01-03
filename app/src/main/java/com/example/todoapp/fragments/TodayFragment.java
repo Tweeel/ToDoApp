@@ -41,8 +41,9 @@ import java.util.List;
 public class TodayFragment extends Fragment {
 
     private TaskViewModel taskViewModel;
-    private RecyclerView recyclerview;
+    private RecyclerView recyclerview,childrecycler;
     private TodayAdapter adapterParent;
+    private TaskAdapter adapterChild;
 
     public static final String EXTRA_TITLE = "com.example.todoapp.EXTRA_TITLE";
     public static final String EXTRA_DESCRIPTION = "com.example.todoapp.EXTRA_DESCRIPTION";
@@ -64,11 +65,14 @@ public class TodayFragment extends Fragment {
 
         // Set up the RecyclerView.
         recyclerview = rootView.findViewById(R.id.recycler_view);
+        childrecycler = recyclerview.findViewById(R.id.tasks);
         adapterParent = new TodayAdapter(getContext());
-        TaskAdapter adapterChild = new TaskAdapter(getContext());
+        adapterChild = new TaskAdapter();
+
         recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerview.setAdapter(adapterParent);
         taskViewModel = new ViewModelProvider(requireActivity()).get(TaskViewModel.class);
+
         List<TaskList> categories = new ArrayList<>();
         TaskList completedTasks = new TaskList("Completed Tasks",null);
         TaskList incompletedTasks = new TaskList("Incompleted Tasks",null);
@@ -91,7 +95,6 @@ public class TodayFragment extends Fragment {
                         completedTasks.setTasks(comtask);
                     }
                 }
-
                 categories.add(incompletedTasks);
                 categories.add(completedTasks);
 
@@ -104,7 +107,8 @@ public class TodayFragment extends Fragment {
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0
                 ,ItemTouchHelper.LEFT |ItemTouchHelper.RIGHT) {
             @Override
-            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder
+            public boolean onMove(@NonNull RecyclerView recyclerView
+                    , @NonNull RecyclerView.ViewHolder viewHolder
                     , @NonNull RecyclerView.ViewHolder target) {
                 return false;
             }
@@ -114,7 +118,7 @@ public class TodayFragment extends Fragment {
                     taskViewModel.delete(adapterChild.getTaskAt(viewHolder.getAdapterPosition()));
                     Toast.makeText(getContext(), "task has been deleted", Toast.LENGTH_LONG).show();
             }
-        }).attachToRecyclerView(recyclerview);
+        }).attachToRecyclerView(childrecycler);
 
         //add onclick to edit the task
         adapterChild.setOnItemClickListener(new TaskAdapter.OnItemClickListener(){
@@ -141,6 +145,7 @@ public class TodayFragment extends Fragment {
                 }
             }
         });
+
         return rootView;
     }
 }
