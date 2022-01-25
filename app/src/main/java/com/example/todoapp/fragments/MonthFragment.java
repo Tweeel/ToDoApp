@@ -16,8 +16,6 @@ public class MonthFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //disable the menu
-        setHasOptionsMenu(true);
     }
 
     @Override

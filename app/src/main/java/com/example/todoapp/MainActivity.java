@@ -99,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
                         .setTopRightCorner(ROUNDED, radius)
                         .setTopLeftCorner(ROUNDED, radius)
                         .build());
-
         /*setup fab*/
         FloatingActionButton addFAB = findViewById(R.id.add);
         /*Create the Dialog here*/

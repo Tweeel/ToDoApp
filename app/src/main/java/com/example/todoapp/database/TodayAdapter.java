@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.todoapp.R;
-import com.example.todoapp.TaskList;
 
 import java.util.List;
 

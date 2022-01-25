@@ -10,21 +10,18 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 
 import com.example.todoapp.AddTask;
 import com.example.todoapp.R;
-import com.example.todoapp.TaskList;
+import com.example.todoapp.database.TaskList;
 import com.example.todoapp.database.Task;
 import com.example.todoapp.database.TaskAdapter;
 import com.example.todoapp.database.TaskViewModel;
 import com.example.todoapp.database.TodayAdapter;
-import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
