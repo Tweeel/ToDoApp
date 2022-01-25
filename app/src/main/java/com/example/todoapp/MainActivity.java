@@ -10,8 +10,6 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.ContextMenu;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,20 +20,18 @@ import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.todoapp.fragments.MenuFragment;
+import com.example.todoapp.fragments.MonthFragment;
 import com.example.todoapp.fragments.MyTaskFragment;
-import com.example.todoapp.fragments.ProfileFragment;
-import com.example.todoapp.fragments.QuickFragment;
+import com.example.todoapp.fragments.NotesFragment;
+import com.example.todoapp.fragments.ListsFragment;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.shape.CornerFamily;
 import com.google.android.material.shape.MaterialShapeDrawable;
 
 public class MainActivity extends AppCompatActivity {
@@ -179,16 +175,16 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new MyTaskFragment();
                         mTitle.setText("Work List");
                         break;
-                    case R.id.menu:
-                        fragment = new MenuFragment();
+                    case R.id.calender:
+                        fragment = new MonthFragment();
                         mTitle.setText("Work List");
                         break;
-                    case R.id.Quick:
-                        fragment = new QuickFragment();
+                    case R.id.menu:
+                        fragment = new ListsFragment();
                         mTitle.setText("Quick Notes");
                         break;
-                    case R.id.profile:
-                        fragment = new ProfileFragment();
+                    case R.id.Quick:
+                        fragment = new NotesFragment();
                         mTitle.setText("Profile");
                         break;
                 }

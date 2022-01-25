@@ -8,24 +8,24 @@
         app:showAsAction="ifRoom"
         android:icon="@drawable/my_task"/>
     <item
-        android:id="@+id/menu"
-        android:title="Menu"
+        android:id="@+id/calender"
+        android:title="Month"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/menu"/>
+        android:icon="@drawable/calender"/>
     <item
         android:id="@+id/empty"
         android:title=""
         app:showAsAction="ifRoom"
         android:enabled="false"/>
     <item
-        android:id="@+id/Quick"
-        android:title="Quick"
+        android:id="@+id/menu"
+        android:title="Lists"
         app:showAsAction="ifRoom"
         android:icon="@drawable/quick"/>
     <item
-        android:id="@+id/profile"
-        android:title="Profile"
+        android:id="@+id/Quick"
+        android:title="Notes"
         app:showAsAction="ifRoom"
-        android:icon="@drawable/profile"/>
+        android:icon="@drawable/note"/>
 
 </menu>

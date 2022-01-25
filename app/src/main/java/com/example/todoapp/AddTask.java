@@ -4,7 +4,6 @@ import static android.text.TextUtils.isEmpty;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,7 +13,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.todoapp.fragments.TodayFragment;
+import com.example.todoapp.fragments.MyTaskFragment;
 
 public class AddTask extends AppCompatActivity {
 
@@ -52,14 +51,14 @@ public class AddTask extends AppCompatActivity {
         header = findViewById(R.id.header);
 
         Intent intent = getIntent();
-        if(!(isEmpty(intent.getStringExtra(TodayFragment.EXTRA_TITLE))
-                ||isEmpty(intent.getStringExtra(TodayFragment.EXTRA_DESCRIPTION))
-                ||isEmpty(intent.getStringExtra(TodayFragment.EXTRA_CATEGORY))
-                ||isEmpty(intent.getStringExtra(TodayFragment.EXTRA_ID)))){
-            String title = intent.getStringExtra(TodayFragment.EXTRA_TITLE);
-            String description = intent.getStringExtra(TodayFragment.EXTRA_DESCRIPTION);
-            String category = intent.getStringExtra(TodayFragment.EXTRA_CATEGORY);
-            id = intent.getStringExtra(TodayFragment.EXTRA_ID);
+        if(!(isEmpty(intent.getStringExtra(MyTaskFragment.EXTRA_TITLE))
+                ||isEmpty(intent.getStringExtra(MyTaskFragment.EXTRA_DESCRIPTION))
+                ||isEmpty(intent.getStringExtra(MyTaskFragment.EXTRA_CATEGORY))
+                ||isEmpty(intent.getStringExtra(MyTaskFragment.EXTRA_ID)))){
+            String title = intent.getStringExtra(MyTaskFragment.EXTRA_TITLE);
+            String description = intent.getStringExtra(MyTaskFragment.EXTRA_DESCRIPTION);
+            String category = intent.getStringExtra(MyTaskFragment.EXTRA_CATEGORY);
+            id = intent.getStringExtra(MyTaskFragment.EXTRA_ID);
             TitleView.setText(title);
             descriptionView.setText(description);
             categoryView.setText(category);
