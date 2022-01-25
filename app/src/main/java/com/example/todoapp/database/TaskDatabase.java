@@ -55,8 +55,8 @@ public abstract class TaskDatabase extends RoomDatabase {
             taskDao.insert(new Task("task 1","description 1" , "1"));
             taskDao.insert(new Task("task 2","description 2" , "2"));
             taskDao.insert(new Task("task 3","description 3" , "3"));
-            taskDao.insert(new Task("task 3","description 3" , "4"));
-            taskDao.insert(new Task("task 3","description 3" , "5"));
+            taskDao.insert(new Task("task 3","description 4" , "4"));
+            taskDao.insert(new Task("task 3","description 5" , "5"));
             return null;
         }
     }

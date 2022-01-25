@@ -1,17 +1,28 @@
 package com.example.todoapp;
 
+import static com.google.android.material.shape.CornerFamily.ROUNDED;
+
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -53,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
 
+        /* receive the data from the add task activity and send it to the fragment
+        * */
         Intent intent = getIntent();
         if(intent.getStringExtra(AddTask.EXTRA_TITLE)!=null
                 &&intent.getStringExtra(AddTask.EXTRA_DESCRIPTION)!=null
@@ -87,16 +100,60 @@ public class MainActivity extends AppCompatActivity {
         bottomBarBackground.setShapeAppearanceModel(
                 bottomBarBackground.getShapeAppearanceModel()
                         .toBuilder()
-                        .setTopRightCorner(CornerFamily.ROUNDED, radius)
-                        .setTopLeftCorner(CornerFamily.ROUNDED, radius)
+                        .setTopRightCorner(ROUNDED, radius)
+                        .setTopLeftCorner(ROUNDED, radius)
                         .build());
 
-        //setup fab
+        /*setup fab*/
         FloatingActionButton addFAB = findViewById(R.id.add);
-        addFAB.setOnClickListener(v -> {
-            Intent intentadd = new Intent(this, AddTask.class);
-            startActivity(intentadd);
+        /*Create the Dialog here*/
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.create_new);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.back_round_white));
+        }
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        Window window = dialog.getWindow();
+        window.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        window.setGravity(Gravity.CENTER);
+
+        TextView task = dialog.findViewById(R.id.task);
+        TextView note = dialog.findViewById(R.id.note);
+        TextView list = dialog.findViewById(R.id.list);
+
+        task.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentadd = new Intent(MainActivity.this, AddTask.class);
+                startActivity(intentadd);
+                dialog.dismiss();
+            }
         });
+
+        note.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(MainActivity.this, "note", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
+
+        list.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(MainActivity.this, "list", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
+
+        /*onclick to fab to show the dialog*/
+        addFAB.setOnClickListener(v -> {
+            dialog.show(); // Showing the dialog here
+        });
+
 
         //get the drawable
         Drawable myFabSrc = getResources().getDrawable(R.drawable.add);

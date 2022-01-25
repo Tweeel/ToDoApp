@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -41,7 +40,6 @@ import java.util.List;
 public class TodayFragment extends Fragment {
 
     private TaskViewModel taskViewModel;
-    private RecyclerView recyclerview,childrecycler;
     private TodayAdapter adapterParent;
     private TaskAdapter adapterChild;
 
@@ -56,7 +54,7 @@ public class TodayFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
@@ -64,8 +62,8 @@ public class TodayFragment extends Fragment {
                 .inflate(R.layout.fragment_today, container, false);
 
         // Set up the RecyclerView.
-        recyclerview = rootView.findViewById(R.id.recycler_view);
-        childrecycler = recyclerview.findViewById(R.id.tasks);
+        RecyclerView recyclerview = rootView.findViewById(R.id.recycler_view);
+        RecyclerView childrecycler = recyclerview.findViewById(R.id.tasks);
         adapterParent = new TodayAdapter(getContext());
         adapterChild = new TaskAdapter();
 
@@ -83,25 +81,21 @@ public class TodayFragment extends Fragment {
         // Update the cached copy of the words in the adapter.
         // Get all the words from the database
         // and associate them to the adapter.
-        taskViewModel.getAllTasks().observe( getActivity(), new Observer<List<Task>>() {
-            @Override
-            public void onChanged(List<Task> tasks) {
-                for(Task task : tasks){
-                    if(task.getState().equals("0")) {
-                        intask.add(task);
-                        incompletedTasks.setTasks(intask);
-                    } else{
-                        comtask.add(task);
-                        completedTasks.setTasks(comtask);
-                    }
+        taskViewModel.getAllTasks().observe(requireActivity(), tasks -> {
+            for (Task task : tasks) {
+                if (task.getState().equals("0")) {
+                    intask.add(task);
+                    incompletedTasks.setTasks(intask);
+                } else {
+                    comtask.add(task);
+                    completedTasks.setTasks(comtask);
                 }
-                categories.add(incompletedTasks);
-                categories.add(completedTasks);
-
-                adapterParent.setCategory(categories);
             }
-        });
+            categories.add(incompletedTasks);
+            categories.add(completedTasks);
 
+            adapterParent.setCategory(categories);
+        });
 
         //add the onswip to delete the task
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0
@@ -116,13 +110,12 @@ public class TodayFragment extends Fragment {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                     taskViewModel.delete(adapterChild.getTaskAt(viewHolder.getAdapterPosition()));
-                    Toast.makeText(getContext(), "task has been deleted", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),"task has been deleted",Toast.LENGTH_LONG).show();
             }
         }).attachToRecyclerView(childrecycler);
 
         //add onclick to edit the task
         adapterChild.setOnItemClickListener(new TaskAdapter.OnItemClickListener(){
-
             @Override
             public void onItemClick(Task task) {
                 Intent intent = new Intent(getActivity(), AddTask.class);
@@ -138,11 +131,10 @@ public class TodayFragment extends Fragment {
             public void onDoneClick(Task task) {
                 if(task.getState().equals("0")){
                     task.setState("1");
-                    taskViewModel.update(task);
                 }else{
                     task.setState("0");
-                    taskViewModel.update(task);
                 }
+                taskViewModel.update(task);
             }
         });
 

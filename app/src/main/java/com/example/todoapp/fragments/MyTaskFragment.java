@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 
@@ -83,4 +84,5 @@ public class MyTaskFragment extends Fragment {
         //and set theme into the viewpager
         viewpager.setAdapter(adapter);
     }
+
 }

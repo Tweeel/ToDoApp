@@ -168,7 +168,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
         private final TextView textViewDescription;
         private final View view;
         private final LinearLayout layout;
-        private final RelativeLayout EditLayout;
 
         public TaskHolder(@NonNull View itemView) {
             super(itemView);
@@ -176,17 +175,19 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
             textViewDescription = itemView.findViewById(R.id.text_view_description);
             layout = itemView.findViewById(R.id.color);
             view = itemView.findViewById(R.id.image);
-            EditLayout = itemView.findViewById(R.id.EditLayout);
+            RelativeLayout editLayout = itemView.findViewById(R.id.EditLayout);
 
-            EditLayout.setOnClickListener(v -> {
-                Integer position = getAdapterPosition();
-                Log.d("test",Integer.toString(position));
-                listener.onItemClick(tasks.get(position));
+            itemView.setOnClickListener(v -> {
+                int position = TaskHolder.this.getAdapterPosition();
+                Log.d("test", Integer.toString(position));
+                if (listener != null && position != RecyclerView.NO_POSITION)
+                    listener.onItemClick(tasks.get(position));
             });
 
             view.setOnClickListener(v -> {
-                int position = getAdapterPosition();
-                listener.onDoneClick(tasks.get(position));
+                int position = TaskHolder.this.getAdapterPosition();
+                if (listener != null && position != RecyclerView.NO_POSITION)
+                    listener.onDoneClick(tasks.get(position));
             });
         }
     }
