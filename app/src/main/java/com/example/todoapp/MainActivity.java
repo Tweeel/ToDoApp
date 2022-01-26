@@ -102,27 +102,40 @@ public class MainActivity extends AppCompatActivity {
         /*setup fab*/
         FloatingActionButton addFAB = findViewById(R.id.add);
         /*Create the Dialog here*/
-        Dialog dialog = new Dialog(this);
-        dialog.setContentView(R.layout.create_new);
+        Dialog dialog_new = new Dialog(this);
+        dialog_new.setContentView(R.layout.create_new);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.back_round_white));
+            dialog_new.getWindow().setBackgroundDrawable(getDrawable(R.drawable.back_round_white));
         }
-        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog_new.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        Window window = dialog.getWindow();
-        window.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        window.setGravity(Gravity.CENTER);
+        Window window_new = dialog_new.getWindow();
+        window_new.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        window_new.setGravity(Gravity.CENTER);
 
-        TextView task = dialog.findViewById(R.id.task);
-        TextView note = dialog.findViewById(R.id.note);
-        TextView list = dialog.findViewById(R.id.list);
+        /*Create the Dialog for the new list*/
+        Dialog dialog_list = new Dialog(this);
+        dialog_list.setContentView(R.layout.new_note);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            dialog_list.getWindow().setBackgroundDrawable(getDrawable(R.drawable.back_round_white));
+        }
+        dialog_list.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+        Window window_list = dialog_list.getWindow();
+        window_list.setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        window_list.setGravity(Gravity.CENTER);
+
+        //setup the dialog new buttons
+        TextView task = dialog_new.findViewById(R.id.task);
+        TextView note = dialog_new.findViewById(R.id.note);
+        TextView list = dialog_new.findViewById(R.id.list);
 
         task.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intentadd = new Intent(MainActivity.this, AddTask.class);
                 startActivity(intentadd);
-                dialog.dismiss();
+                dialog_new.dismiss();
             }
         });
 
@@ -131,22 +144,21 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Toast.makeText(MainActivity.this, "note", Toast.LENGTH_SHORT).show();
-                dialog.dismiss();
+                dialog_new.dismiss();
             }
         });
 
         list.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Toast.makeText(MainActivity.this, "list", Toast.LENGTH_SHORT).show();
-                dialog.dismiss();
+                dialog_list.show(); // Showing the dialog_new here
+                dialog_new.dismiss();
             }
         });
 
-        /*onclick to fab to show the dialog*/
+        /*onclick to fab to show the dialog_new*/
         addFAB.setOnClickListener(v -> {
-            dialog.show(); // Showing the dialog here
+            dialog_new.show(); // Showing the dialog_new here
         });
 
 
@@ -172,19 +184,19 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.myTask:
                         fragment = new MyTaskFragment();
-                        mTitle.setText("Work List");
+                        mTitle.setText("My Tasks");
                         break;
                     case R.id.calender:
                         fragment = new MonthFragment();
-                        mTitle.setText("Work List");
+                        mTitle.setText("Month");
                         break;
                     case R.id.menu:
                         fragment = new ListsFragment();
-                        mTitle.setText("Quick Notes");
+                        mTitle.setText("Lists");
                         break;
                     case R.id.Quick:
                         fragment = new NotesFragment();
-                        mTitle.setText("Profile");
+                        mTitle.setText("Notes");
                         break;
                 }
                 getSupportFragmentManager().beginTransaction()
