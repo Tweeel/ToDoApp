@@ -2,6 +2,7 @@ package com.example.todoapp.database;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 /**
@@ -19,8 +20,7 @@ public class Task {
     private String description;
     private String category;
     private String date;
-    private String timesStart;
-    private String timeEnd;
+    private String time;
     @ColumnInfo(name = "state",defaultValue = "0")
     private String state="0";
 
@@ -28,6 +28,15 @@ public class Task {
         this.title = title;
         this.description = description;
         this.category = category;
+    }
+
+    @Ignore
+    public Task(String title, String description, String category, String date, String time) {
+        this.title = title;
+        this.description = description;
+        this.category = category;
+        this.date = date;
+        this.time = time;
     }
 
     public void setId(int id) {
@@ -38,12 +47,8 @@ public class Task {
         this.date = date;
     }
 
-    public void setTimesStart(String timesStart) {
-        this.timesStart = timesStart;
-    }
-
-    public void setTimeEnd(String timeEnd) {
-        this.timeEnd = timeEnd;
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public int getId() {
@@ -70,12 +75,8 @@ public class Task {
         return date;
     }
 
-    public String getTimesStart() {
-        return timesStart;
-    }
-
-    public String getTimeEnd() {
-        return timeEnd;
+    public String getTime() {
+        return time;
     }
 
     public String getState() {

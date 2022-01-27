@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.todoapp.R;
 
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -47,7 +48,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
         if (tasks != null) {
             Task currentTask = tasks.get(position);
             holder.textViewTitle.setText(currentTask.getTitle());
-            holder.textViewDescription.setText(currentTask.getDescription());
+            holder.textViewDescription.setText(currentTask.getTime());
 
             switch (currentTask.getCategory()) {
                 case "1":

@@ -46,6 +46,8 @@ public class MyTaskFragment extends Fragment {
     public static final String EXTRA_TITLE = "com.example.todoapp.EXTRA_TITLE";
     public static final String EXTRA_DESCRIPTION = "com.example.todoapp.EXTRA_DESCRIPTION";
     public static final String EXTRA_CATEGORY = "com.example.todoapp.EXTRA_CATEGORY";
+    public static final String EXTRA_TIME = "com.example.todoapp.EXTRA_TIME";
+    public static final String EXTRA_DATE = "com.example.todoapp.EXTRA_DATE";
     public static final String EXTRA_ID = "com.example.todoapp.EXTRA_ID";
 
     @Override
@@ -67,11 +69,13 @@ public class MyTaskFragment extends Fragment {
             String title = bundle.getString("title");
             String description = bundle.getString("description");
             String category = bundle.getString("category");
+            String date = bundle.getString("date");
+            String time = bundle.getString("time");
             String id = bundle.getString("id");
             // Set up the RecyclerView.
             TaskViewModel taskViewModel = new ViewModelProvider(requireActivity()).get(TaskViewModel.class);
             //creat a task with the new data
-            Task taskAdd = new Task(title, description,category);
+            Task taskAdd = new Task(title, description,category,date,time);
             if(id.equals("0")){
                 //add the task
                 taskViewModel.insert(taskAdd);
@@ -147,6 +151,8 @@ public class MyTaskFragment extends Fragment {
                 intent.putExtra(EXTRA_TITLE, task.getTitle());
                 intent.putExtra(EXTRA_DESCRIPTION, task.getDescription());
                 intent.putExtra(EXTRA_CATEGORY, task.getCategory());
+                intent.putExtra(EXTRA_TIME, task.getTime());
+                intent.putExtra(EXTRA_DATE, task.getDate());
                 intent.putExtra(EXTRA_ID, Integer.toString(task.getId()));
                 Log.d("test", "state  = "+task.getState());
                 startActivity(intent);

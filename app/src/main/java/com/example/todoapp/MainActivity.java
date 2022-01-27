@@ -66,10 +66,14 @@ public class MainActivity extends AppCompatActivity {
         if(intent.getStringExtra(AddTask.EXTRA_TITLE)!=null
                 &&intent.getStringExtra(AddTask.EXTRA_DESCRIPTION)!=null
                 &&intent.getStringExtra(AddTask.EXTRA_CATEGORY)!=null
-                &&intent.getStringExtra(AddTask.EXTRA_ID)!=null){
+                &&intent.getStringExtra(AddTask.EXTRA_ID)!=null
+                &&intent.getStringExtra(AddTask.EXTRA_TIME)!=null
+                &&intent.getStringExtra(AddTask.EXTRA_DATE)!=null){
             String title = intent.getStringExtra(AddTask.EXTRA_TITLE);
             String description = intent.getStringExtra(AddTask.EXTRA_DESCRIPTION);
             String category = intent.getStringExtra(AddTask.EXTRA_CATEGORY);
+            String date = intent.getStringExtra(AddTask.EXTRA_DATE);
+            String time = intent.getStringExtra(AddTask.EXTRA_TIME);
             String id = intent.getStringExtra(AddTask.EXTRA_ID);
 
             MyTaskFragment fragment = new MyTaskFragment();
@@ -78,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
             datareceived.putString("title", title);
             datareceived.putString("description", description);
             datareceived.putString("category", category);
+            datareceived.putString("time", time);
+            datareceived.putString("date", date);
             datareceived.putString("id",id);
             fragment.setArguments(datareceived);
             fragmentTransaction.replace(R.id.fragmentContainerView, fragment).commit();
@@ -115,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
         /*Create the Dialog for the new list*/
         Dialog dialog_list = new Dialog(this);
-        dialog_list.setContentView(R.layout.new_note);
+        dialog_list.setContentView(R.layout.new_list);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             dialog_list.getWindow().setBackgroundDrawable(getDrawable(R.drawable.back_round_white));
         }
