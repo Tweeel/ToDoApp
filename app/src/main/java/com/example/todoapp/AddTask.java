@@ -127,8 +127,8 @@ public class AddTask extends AppCompatActivity {
         String month_string = Integer.toString(month+1);
         String day_string = Integer.toString(day);
         String year_string = Integer.toString(year);
-        String dateMessage = (month_string +
-                "/" + day_string + "/" + year_string);
+        String dateMessage = (day_string +
+                "/" + month_string + "/" + year_string);
         dateView.setText(dateMessage);
     }
 

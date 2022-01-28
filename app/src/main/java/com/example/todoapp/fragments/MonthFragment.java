@@ -26,7 +26,11 @@ import com.example.todoapp.database.TaskViewModel;
 import com.example.todoapp.database.TodayAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class MonthFragment extends Fragment {
 
@@ -61,27 +65,50 @@ public class MonthFragment extends Fragment {
         taskViewModel = new ViewModelProvider(requireActivity()).get(TaskViewModel.class);
 
         List<TaskList> categories = new ArrayList<>();
-        TaskList completedTasks = new TaskList("Completed Tasks",null);
-        TaskList incompletedTasks = new TaskList("Incompleted Tasks",null);
-        List<Task> intask = new ArrayList<>();
-        List<Task> comtask = new ArrayList<>();
+        List<String> dates = new ArrayList<>();
 
+        int catnum=0;
 
         // Update the cached copy of the words in the adapter.
         // Get all the words from the database
         // and associate them to the adapter.
         taskViewModel.getAllTasks().observe(requireActivity(), tasks -> {
             for (Task task : tasks) {
-                if (task.getState().equals("0")) {
-                    intask.add(task);
-                    incompletedTasks.setTasks(intask);
-                } else {
-                    comtask.add(task);
-                    completedTasks.setTasks(comtask);
-                }
+                dates.add(task.getDate());
             }
-            categories.add(incompletedTasks);
-            categories.add(completedTasks);
+            Set<String> datesSet = new HashSet<>(dates);
+            dates.clear();
+            dates.addAll(datesSet);
+            Log.d("test", "dates size = "+String.valueOf(dates.size()));
+
+            for(String date : dates) {
+                categories.add(new TaskList(date,null));
+            }
+
+            Log.d("test", "categories size = "+String.valueOf(categories.size()));
+
+            for(Task task : tasks){
+                Log.d("test", "task = "+ task.getDate());
+                for(TaskList tasklist : categories){
+                    Log.d("test", "tasklist = "+ tasklist.getTitle());
+                    if(task.getDate().equals(tasklist.getTitle())){
+                        Log.d("test", "I'm in");
+                        if(tasklist.getTasks()==null){
+                            Log.d("test", "if");
+                            List<Task> list = new ArrayList<>();
+                            list.add(task);
+                            tasklist.setTasks(list);
+                            list.clear();
+                            break;
+                        }else {
+                            Log.d("test", "else");
+                            tasklist.getTasks().add(task);
+                            break;
+                        }
+                    }
+                }
+                Log.d("test", "-----------------------------------");
+            }
 
             adapterParent.setCategory(categories);
         });
@@ -132,7 +159,7 @@ public class MonthFragment extends Fragment {
 
     //disable the menu
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         menu.clear();
     }

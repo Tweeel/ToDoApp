@@ -42,13 +42,17 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
         return new TaskHolder(itemView);
     }
 
-    @SuppressLint("ResourceAsColor")
+    @SuppressLint({"ResourceAsColor", "SetTextI18n"})
     @Override
     public void onBindViewHolder(@NonNull TaskHolder holder, int position) {
         if (tasks != null) {
             Task currentTask = tasks.get(position);
             holder.textViewTitle.setText(currentTask.getTitle());
-            holder.textViewDescription.setText(currentTask.getTime());
+
+            if(currentTask.getTime()==null)
+                holder.textViewDescription.setText("Anytime");
+            else
+                holder.textViewDescription.setText(currentTask.getDate());
 
             switch (currentTask.getCategory()) {
                 case "1":
