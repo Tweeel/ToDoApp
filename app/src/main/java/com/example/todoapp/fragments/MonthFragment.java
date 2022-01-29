@@ -26,6 +26,8 @@ import com.example.todoapp.database.TaskViewModel;
 import com.example.todoapp.database.TodayAdapter;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -74,24 +76,25 @@ public class MonthFragment extends Fragment {
             for (Task task : tasks) {
                 dates.add(task.getDate());
             }
+
+            //use a hashset to delete the repeated element
             Set<String> datesSet = new HashSet<>(dates);
             dates.clear();
             dates.addAll(datesSet);
-            Log.d("test", "dates size = "+String.valueOf(dates.size()));
 
+            //use the commections sort to sort the list alphabetically
+            Collections.sort(dates);
+
+            //creat a categories of each date
             for(String date : dates) {
                 categories.add(new TaskList(date,null));
             }
 
-            Log.d("test", "categories size = "+String.valueOf(categories.size()));
-
-
+            //then add each task to hes date categorie
             for(TaskList tasklist : categories){
                 Log.d("test", "tasklist = "+ tasklist.getTitle());
                 for(Task task : tasks){
-                    Log.d("test", "task = "+ task.getDate());
                     if(task.getDate().equals(tasklist.getTitle())){
-                        Log.d("test", "I'm in");
                         List<Task> list = new ArrayList<>();
                         if(tasklist.getTasks()==null){
                             Log.d("test", "if");
@@ -106,7 +109,6 @@ public class MonthFragment extends Fragment {
                         }
                     }
                 }
-                Log.d("test", "-----------------------------------");
             }
 
             adapterParent.setCategory(categories);
