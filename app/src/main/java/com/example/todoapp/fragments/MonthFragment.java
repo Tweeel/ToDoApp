@@ -26,8 +26,6 @@ import com.example.todoapp.database.TaskViewModel;
 import com.example.todoapp.database.TodayAdapter;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -87,23 +85,24 @@ public class MonthFragment extends Fragment {
 
             Log.d("test", "categories size = "+String.valueOf(categories.size()));
 
-            for(Task task : tasks){
-                Log.d("test", "task = "+ task.getDate());
-                for(TaskList tasklist : categories){
-                    Log.d("test", "tasklist = "+ tasklist.getTitle());
+
+            for(TaskList tasklist : categories){
+                Log.d("test", "tasklist = "+ tasklist.getTitle());
+                for(Task task : tasks){
+                    Log.d("test", "task = "+ task.getDate());
                     if(task.getDate().equals(tasklist.getTitle())){
                         Log.d("test", "I'm in");
+                        List<Task> list = new ArrayList<>();
                         if(tasklist.getTasks()==null){
                             Log.d("test", "if");
-                            List<Task> list = new ArrayList<>();
                             list.add(task);
                             tasklist.setTasks(list);
-                            list.clear();
-                            break;
-                        }else {
+                        }
+                        else{
                             Log.d("test", "else");
-                            tasklist.getTasks().add(task);
-                            break;
+                            list.addAll(tasklist.getTasks());
+                            list.add(task);
+                            tasklist.setTasks(list);
                         }
                     }
                 }
