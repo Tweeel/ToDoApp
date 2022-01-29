@@ -52,7 +52,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskHolder> {
             if(currentTask.getTime()==null)
                 holder.textViewDescription.setText("Anytime");
             else
-                holder.textViewDescription.setText(currentTask.getDate());
+                holder.textViewDescription.setText(currentTask.getTime());
 
             switch (currentTask.getCategory()) {
                 case "1":
